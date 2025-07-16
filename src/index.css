@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding:0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes logo-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-logo-scroll {
+  animation: logo-scroll 20s linear infinite;
+  min-width: 200%;
+  display: flex;
+}
