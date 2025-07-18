@@ -541,7 +541,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-40 lg:pt-32">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-32 lg:pt-32">
         {/* Background Video */}
         <video 
           className="absolute inset-0 w-full h-full object-cover"
@@ -585,7 +585,7 @@ function App() {
           
 
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="block text-yellow-300 animate-pulse">Evoke Large Language Model (LLM)</span>
+            <span className="block text-yellow-300 animate-pulse">Evoke AI Large Language Model (LLM)</span>
             <span className="block bg-gradient-to-r from-blue-300 via-purple-300 to-orange-300 bg-clip-text text-transparent">
               MASTER CLASS
             </span>
@@ -657,7 +657,7 @@ function App() {
             className="flex items-center space-x-32 animate-logo-scroll"
             style={{ animation: 'logo-scroll 20s linear infinite', minHeight: '100px' }}
           >
-            {Array(4).fill([3,4,5,6,7,8]).flat().map((num, idx) => (
+            {Array(4).fill([3,4,5,6,7,8,9]).flat().map((num, idx) => (
               <img
                 key={num + '-' + idx}
                 src={`/l${num}.png`}
@@ -715,7 +715,7 @@ function App() {
                  { icon: Clock, label: 'Next Batch', value: 'Starts August 1, 2025', color: 'bg-purple-100 text-purple-600' },
                  { icon: Award, label: 'Certification', value: 'Industry-recognized certificate', color: 'bg-yellow-100 text-yellow-600' },
                  { icon: Users, label: 'Group Discount', value: 'Available for 3+ participants', color: 'bg-pink-100 text-pink-600' },  
-                 { icon: DollarSign, label: 'Incentive', value: 'Up to ₹5,000/month from 4th month for top performers', color: 'bg-green-100 text-green-600' },               
+                 { icon: DollarSign, label: 'Incentive', value: 'Top performers earn up to ₹5,000/month from Month 2, rising to ₹7,000/month from Month 4 for exceptional performance', color: 'bg-green-100 text-green-600' },               
                 ].map((item, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
                     <div className={`p-3 rounded-lg ${item.color}`}>
@@ -908,8 +908,8 @@ function App() {
                       <span className="font-medium text-gray-700">Stipend</span>
                     </div>
                     <span className="text-blue-600 text-right block">
-                      Upto 5,000/month from 4th month
-                      <span className="block text-xs text-blue-500 font-normal">(for top performers)</span>
+                      Upto 5,000/month from 2nd month
+                      <span className="block text-xs text-blue-500 font-normal">(7000/month from 4th month for top performers)</span>
                     </span>
                   </div>
                   {/* Placement Opportunity Row - users + rocket emoji, label, blue value right-aligned */}
