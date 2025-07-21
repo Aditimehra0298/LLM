@@ -516,17 +516,17 @@ const VideoPlayer: React.FC<{
 }> = ({ videoUrl, thumbnail, title }) => {
   return (
     <div className="relative w-full h-32 sm:h-40 md:h-48 lg:h-52 xl:h-56 bg-gray-900 rounded-lg overflow-hidden group">
-      <video 
-        src={videoUrl}
-        className="w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
+          <video 
+            src={videoUrl}
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
         playsInline
-      />
-      <div className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-red-600 text-white px-2 py-1 rounded text-xs sm:text-sm font-medium animate-pulse">
-        ● LIVE
-      </div>
+          />
+          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-red-600 text-white px-2 py-1 rounded text-xs sm:text-sm font-medium animate-pulse">
+            ● LIVE
+          </div>
     </div>
   );
 };

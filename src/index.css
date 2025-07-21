@@ -12,12 +12,12 @@ html,body{
 }
 
 @keyframes logo-scroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-logo-scroll {
-  animation: logo-scroll 20s linear infinite;
+  animation: logo-scroll 40s linear infinite;
   min-width: 200%;
   display: flex;
 }

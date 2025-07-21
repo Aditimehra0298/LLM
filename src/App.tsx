@@ -42,6 +42,7 @@ import {
   Menu
 } from 'lucide-react';
 import PhasePlan from './PhasePlan';
+import MasterclassGrid from './MasterclassGrid';
 
 // --- LLM Tools Explorer Section (from user HTML) ---
 const allTools = [
@@ -192,7 +193,9 @@ function App() {
     email: '',
     phone: '',
     profession: '',
-    location: ''
+    location: '',
+    trainingMode: '',
+    message: ''
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -208,6 +211,8 @@ function App() {
       email: form.email,
       location: form.location,
       professional: form.profession,
+      trainingMode: form.trainingMode,
+      message: form.message,
       timestamp
     };
     try {
@@ -220,7 +225,7 @@ function App() {
         },
       });
       setFormStatus('success');
-      setForm({ name: '', email: '', phone: '', profession: '', location: '' });
+      setForm({ name: '', email: '', phone: '', profession: '', location: '', trainingMode: '', message: '' });
     } catch (err) {
       setFormStatus('error');
     }
@@ -649,13 +654,13 @@ function App() {
         </div>
       </section>
 
-      {/* Partner Companies Section - Always Filled Motion Bar */}
+      {/* Partner Companies Section */}
       <section className="bg-white py-8">
         <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">Our Partner Companies</h2>
         <div className="w-full overflow-x-hidden">
           <div
-            className="flex items-center space-x-32 animate-logo-scroll"
-            style={{ animation: 'logo-scroll 20s linear infinite', minHeight: '100px' }}
+            className="flex items-center space-x-16 animate-logo-scroll min-w-full"
+            style={{ animation: 'logo-scroll 40s linear infinite', minHeight: '100px' }}
           >
             {Array(4).fill([3,4,5,6,7,8,9]).flat().map((num, idx) => (
               <img
@@ -709,8 +714,8 @@ function App() {
               
               <div className="space-y-4 relative z-10">
                 {[
-                 { icon: Calendar, label: 'Duration', value: '4 Months Training + 2 Months Industry Training', color: 'bg-blue-100 text-blue-600' },
-                 { icon: Globe, label: 'Mode', value: '100% Offline Training', color: 'bg-green-100 text-green-600' },
+                 { icon: Calendar, label: 'Duration', value: '3 Months of Expert-Led Training + 3 Months of Industry Training', color: 'bg-blue-100 text-blue-600' },
+                 { icon: Globe, label: 'Mode', value: 'Offline Training or Online Training', color: 'bg-green-100 text-green-600' },
                  { icon: DollarSign, label: 'Total Fees', value: '₹10,000 per month (6 Months)', color: 'bg-orange-100 text-orange-600' },
                  { icon: Clock, label: 'Next Batch', value: 'Starts August 1, 2025', color: 'bg-purple-100 text-purple-600' },
                  { icon: Award, label: 'Certification', value: 'Industry-recognized certificate', color: 'bg-yellow-100 text-yellow-600' },
@@ -731,6 +736,9 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Program Overview Section End */}
+        <MasterclassGrid setShowEnrollModal={setShowEnrollModal} />
 
         {/* Interactive Curriculum Section */}
         <section id="curriculum" className="py-0 bg-transparent px-0">
@@ -889,7 +897,7 @@ function App() {
                     { label: '👥 Group Discount', value: 'Available for 3+', icon: Users },
                     { label: '💰 Payment Plan', value: '₹10,000 per month for 6 months', icon: DollarSign },
                     { label: '📅 Start Date', value: 'August 1, 2025', icon: Calendar },
-                    { label: '🖥️ Mode', value: '100% Offline', icon: Globe },
+                    { label: '🖥️ Mode', value: 'Offline or Online Training', icon: Globe },
                     { label: '📜 Certification', value: 'DamnArt AI Division', icon: Award },
                   ].map((item, index) => (
                     <div key={index} className="flex items-center justify-between py-4 border-b border-gray-200 hover:bg-gray-50 px-4 rounded-lg transition-colors duration-300">
@@ -1089,6 +1097,28 @@ function App() {
                   value={form.location}
                   onChange={e => setForm({ ...form, location: e.target.value })}
                   required
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Training Mode</label>
+                <select
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  value={form.trainingMode}
+                  onChange={e => setForm({ ...form, trainingMode: e.target.value })}
+                  required
+                >
+                  <option value="">Select Training Mode</option>
+                  <option value="Offline">Offline Training</option>
+                  <option value="Online">Online Training</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Any Message</label>
+                <textarea
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[80px]"
+                  value={form.message}
+                  onChange={e => setForm({ ...form, message: e.target.value })}
+                  placeholder="Let us know anything else..."
                 />
               </div>
               <div className="flex flex-col sm:flex-row justify-end gap-2 pt-2">
