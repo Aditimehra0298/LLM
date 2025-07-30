@@ -470,8 +470,17 @@ function App() {
 
   return (
   <div className="min-h-screen bg-gray-50">
-      {/* Floating Notification */}
-      {/* (Remove the entire floating notification div) */}
+      {/* Floating Discount Notification */}
+      <div className="fixed top-20 sm:top-24 left-2 sm:left-4 z-40 bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 sm:p-4 rounded-lg shadow-2xl animate-pulse max-w-[200px] sm:max-w-xs">
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="text-lg sm:text-2xl">🔥</div>
+          <div>
+            <div className="font-bold text-xs sm:text-sm">SPECIAL OFFER</div>
+            <div className="text-xs">₹60k→₹30k</div>
+            <div className="text-xs">Early: ₹20k</div>
+          </div>
+        </div>
+      </div>
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
@@ -589,60 +598,60 @@ function App() {
           {/* Floating Badge: Group Discount Available */}
           
 
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-tight">
-            <span className="block text-yellow-300 animate-pulse">Evoke AI Large Language Model (LLM)</span>
-            <span className="block bg-gradient-to-r from-blue-300 via-purple-300 to-orange-300 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight px-2">
+            <span className="block text-yellow-300 animate-pulse text-center">Evoke AI Large Language Model (LLM)</span>
+            <span className="block bg-gradient-to-r from-blue-300 via-purple-300 to-orange-300 bg-clip-text text-transparent text-center">
               MASTER CLASS
             </span>
           </h1>
           
-          <p className="text-xl sm:text-2xl mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed px-4">
           Elevate Your AI Career in Just 6 Months – Harness the Power of Large Language Models and Real-World Experience!
           </p>
           
           {/* Hero Stats */}
-          <div className="flex flex-wrap justify-center gap-8 mb-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-6 sm:mb-8 px-4">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-yellow-300">{stat.number}</div>
-                <div className="text-sm text-gray-300">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl font-bold text-yellow-300">{stat.number}</div>
+                <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
               </div>
             ))}
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
             <button
               onClick={() => scrollToSection('overview')}
-              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl relative overflow-hidden"
+              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl relative overflow-hidden w-full sm:w-auto"
             >
-              <span className="relative z-10 flex items-center space-x-2">
-                <Rocket size={20} />
+              <span className="relative z-10 flex items-center justify-center space-x-2">
+                <Rocket size={18} className="sm:w-5 sm:h-5" />
                 <span>Start Your AI Journey</span>
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform sm:w-5 sm:h-5" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
             
             <button
               onClick={() => scrollToSection('curriculum')}
-              className="flex items-center space-x-2 bg-blue-100 text-blue-800 px-6 py-3 rounded-full font-medium hover:bg-blue-200 transition-all duration-300 border border-blue-200"
+              className="flex items-center justify-center space-x-2 bg-blue-100 text-blue-800 px-6 py-3 rounded-full font-medium hover:bg-blue-200 transition-all duration-300 border border-blue-200 w-full sm:w-auto"
             >
-              <BookOpen size={20} />
+              <BookOpen size={18} className="sm:w-5 sm:h-5" />
               <span>View Curriculum</span>
             </button>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-6 text-sm sm:text-base">
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Calendar className="text-yellow-300" size={20} />
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm px-4">
+            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
+              <Calendar className="text-yellow-300 sm:w-5 sm:h-5" size={16} />
               <span>6 Month Program</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Globe className="text-yellow-300" size={20} />
+            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
+              <Globe className="text-yellow-300 sm:w-5 sm:h-5" size={16} />
               <span>100% Offline</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Award className="text-yellow-300" size={20} />
+            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
+              <Award className="text-yellow-300 sm:w-5 sm:h-5" size={16} />
               <span>Industry Certificate</span>
             </div>
           </div>
@@ -716,7 +725,7 @@ function App() {
                 {[
                  { icon: Calendar, label: 'Duration', value: '3 Months of Expert-Led Training + 3 Months of Industry Training', color: 'bg-blue-100 text-blue-600' },
                  { icon: Globe, label: 'Mode', value: 'Offline Training or Online Training', color: 'bg-green-100 text-green-600' },
-                 { icon: DollarSign, label: 'Total Fees', value: '₹10,000 per month (6 Months)', color: 'bg-orange-100 text-orange-600' },
+                 { icon: DollarSign, label: 'Total Fees', value: '₹30,000 total (50% OFF from ₹60,000)', color: 'bg-orange-100 text-orange-600' },
                  { icon: Clock, label: 'Next Batch', value: 'Starts August 1, 2025', color: 'bg-purple-100 text-purple-600' },
                  { icon: Award, label: 'Certification', value: 'Industry-recognized certificate', color: 'bg-yellow-100 text-yellow-600' },
                  { icon: Users, label: 'Group Discount', value: 'Available for 3+ participants', color: 'bg-pink-100 text-pink-600' },  
@@ -885,27 +894,49 @@ function App() {
                 Invest in your future with our comprehensive Large Language Model workshop.
                 </p>
                 
-                <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-8 rounded-2xl text-center mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                {/* Discount Banner */}
+                <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-4 sm:p-6 rounded-2xl text-center mb-6 sm:mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/10 rounded-full -mr-12 sm:-mr-16 -mt-12 sm:-mt-16"></div>
                   <div className="relative z-10">
-                    <div className="text-5xl font-bold mb-2">₹10,000 per month</div>
+                    <div className="text-xl sm:text-3xl font-bold mb-2">🔥 SPECIAL DISCOUNT</div>
+                    <div className="text-lg sm:text-xl mb-2">₹60k → ₹30k</div>
+                    <div className="text-sm sm:text-lg">Early Bird: ₹20k (Limited)</div>
                   </div>
                 </div>
                 
-                <div className="space-y-4">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 sm:p-8 rounded-2xl text-center mb-6 sm:mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/10 rounded-full -mr-12 sm:-mr-16 -mt-12 sm:-mt-16"></div>
+                  <div className="relative z-10">
+                    <div className="text-2xl sm:text-4xl font-bold mb-2 line-through opacity-70">₹60,000</div>
+                    <div className="text-3xl sm:text-5xl font-bold mb-2 text-yellow-300">₹30,000</div>
+                    <div className="text-sm sm:text-lg opacity-90">50% OFF - Limited Time</div>
+                  </div>
+                </div>
+                
+                {/* Early Bird Special */}
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 sm:p-6 rounded-2xl text-center mb-6 sm:mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 sm:w-24 h-20 sm:h-24 bg-white/10 rounded-full -mr-10 sm:-mr-12 -mt-10 sm:-mt-12"></div>
+                  <div className="relative z-10">
+                    <div className="text-xl sm:text-3xl font-bold mb-2">Early Bird Special</div>
+                    <div className="text-2xl sm:text-4xl font-bold mb-2">₹20,000</div>
+                    <div className="text-xs sm:text-sm opacity-90">Only for first few seats</div>
+                  </div>
+                </div>
+                
+                <div className="space-y-3 sm:space-y-4">
                   {[
                     { label: '👥 Group Discount', value: 'Available for 3+', icon: Users },
-                    { label: '💰 Payment Plan', value: '₹10,000 per month for 6 months', icon: DollarSign },
+                    { label: '💰 Payment Plan', value: '₹30,000 total (was ₹60,000)', icon: DollarSign },
                     { label: '📅 Start Date', value: 'August 1, 2025', icon: Calendar },
                     { label: '🖥️ Mode', value: 'Offline or Online Training', icon: Globe },
                     { label: '📜 Certification', value: 'DamnArt AI Division', icon: Award },
                   ].map((item, index) => (
-                    <div key={index} className="flex items-center justify-between py-4 border-b border-gray-200 hover:bg-gray-50 px-4 rounded-lg transition-colors duration-300">
-                      <div className="flex items-center space-x-3">
-                        <item.icon className="text-blue-600" size={20} />
-                        <span className="font-medium text-gray-700">{item.label}</span>
+                    <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between py-3 sm:py-4 border-b border-gray-200 hover:bg-gray-50 px-3 sm:px-4 rounded-lg transition-colors duration-300">
+                      <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-0">
+                        <item.icon className="text-blue-600 sm:w-5 sm:h-5" size={18} />
+                        <span className="font-medium text-gray-700 text-sm sm:text-base">{item.label}</span>
                       </div>
-                      <span className="text-blue-600 ">{item.value}</span>
+                      <span className="text-blue-600 text-sm sm:text-base">{item.value}</span>
                     </div>
                   ))}
                   {/* Stipend Row - suitcase + gift emoji, label, blue value right-aligned, two lines */}
@@ -974,21 +1005,21 @@ function App() {
       {/* Floating Call Button */}
       <a
         href="tel:+919056544487"
-        className="fixed bottom-24 right-6 z-50 flex items-center justify-center bg-red-600 text-white p-0 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-300"
-        style={{ boxShadow: '0 8px 32px 0 rgba(200, 0, 0, 0.25)', width: '56px', height: '56px' }}
+        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 flex items-center justify-center bg-red-600 text-white p-0 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-300"
+        style={{ boxShadow: '0 8px 32px 0 rgba(200, 0, 0, 0.25)', width: '48px', height: '48px' }}
         aria-label="Call +91 90565 44487"
       >
-        <Phone className="" size={32} />
+        <Phone className="" size={24} />
       </a>
       {/* Floating WhatsApp Button */}
       <a
         href="https://wa.me/919056544487"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-transparent p-0 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
-        style={{ boxShadow: '0 8px 32px 0 rgba(0, 200, 0, 0.15)', width: '56px', height: '56px' }}
+        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center bg-transparent p-0 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
+        style={{ boxShadow: '0 8px 32px 0 rgba(0, 200, 0, 0.15)', width: '48px', height: '48px' }}
         aria-label="WhatsApp +91 90565 44487">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="56" height="56" style={{ display: 'block' }}/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="48" height="48" style={{ display: 'block' }}/>
       </a>
       </div>
       <div className='w-full'>
@@ -1000,31 +1031,31 @@ function App() {
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Don't wait for the future to happen. Create it with AI.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-6 sm:mb-8 px-4">
             <button
               onClick={() => setShowEnrollModal(true)}
-              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center space-x-3 hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl w-full sm:w-auto"
             >
-              <GraduationCap size={24} />
+              <GraduationCap size={20} className="sm:w-6 sm:h-6" />
               <span>Register Now</span>
-              <ArrowRight size={24} />
+              <ArrowRight size={20} className="sm:w-6 sm:h-6" />
             </button>
             <a
               href="tel:+919056544487"
-              className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/30 transition-all duration-300 border-2 border-white/50 flex items-center space-x-2"
+              className="bg-white/20 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white/30 transition-all duration-300 border-2 border-white/50 flex items-center justify-center space-x-2 w-full sm:w-auto"
               style={{ textDecoration: 'none' }}
             >
-              <Phone size={20} />
+              <Phone size={18} className="sm:w-5 sm:h-5" />
               <span>Book a Free Call</span>
             </a>
             <a
               href="https://wa.me/919056544487"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-2xl flex items-center space-x-2"
+              className="bg-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center space-x-2 w-full sm:w-auto"
               style={{ textDecoration: 'none' }}
             >
-              <MessageCircle size={20} />
+              <MessageCircle size={18} className="sm:w-5 sm:h-5" />
               <span>💬 Chat with Us</span>
             </a>
           </div>
@@ -1033,17 +1064,18 @@ function App() {
 
       {/* Enroll Modal */}
       {showEnrollModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-2 p-4 sm:p-6 relative overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full relative overflow-y-auto max-h-[90vh]">
             <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-blue-600 text-2xl"
+              className="absolute top-3 right-3 text-gray-400 hover:text-blue-600 text-2xl z-10"
               onClick={() => setShowEnrollModal(false)}
               aria-label="Close"
             >
               &times;
             </button>
-            <h2 className="text-xl sm:text-2xl font-bold text-blue-700 mb-4 text-center">Enroll Now</h2>
-            <form className="space-y-4" onSubmit={handleEnrollSubmit}>
+            <div className="p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-blue-700 mb-4 text-center">Enroll Now</h2>
+              <form className="space-y-4" onSubmit={handleEnrollSubmit}>
               <div>
                 <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Name</label>
                 <input
@@ -1144,6 +1176,7 @@ function App() {
                 <div className="text-red-600 text-center font-semibold">Submission failed. Please try again.</div>
               )}
             </form>
+            </div>
           </div>
         </div>
       )}

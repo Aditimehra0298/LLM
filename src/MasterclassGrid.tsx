@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Star, Trophy, Zap, Users, BookOpen, Award, DollarSign, MapPin, GraduationCap, FileText, Mail, FileQuestion, Bot, LayoutDashboard, Rocket, CheckCircle, Factory, BrainCircuit } from 'lucide-react';
+import React from 'react';
+import { Trophy, MapPin, GraduationCap, FileText, Mail, FileQuestion, Bot, LayoutDashboard, Rocket, CheckCircle, Factory, BrainCircuit } from 'lucide-react';
 
 const gridItems = [
   {
@@ -75,21 +75,21 @@ const MasterclassGrid: React.FC<MasterclassGridProps> = ({ setShowEnrollModal })
   return (
     <section className="w-full">
       {/* Program Structure Grid */}
-      <section className="mb-20 md:mb-32">
-        <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center text-black">A Program Designed for Mastery</h3>
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+      <section className="mb-16 sm:mb-20 md:mb-32">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-black px-4">A Program Designed for Mastery</h3>
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-stretch">
           {gridItems.map((item) => (
-            <div key={item.id} className="glass-card p-8 rounded-2xl flex flex-col h-full shadow-lg">
+            <div key={item.id} className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col h-full shadow-lg">
               <div className="flex items-center mb-4">
                 {item.icon}
-                <h4 className="text-2xl font-bold ml-4 text-black">{item.title}</h4>
+                <h4 className="text-xl sm:text-2xl font-bold ml-3 sm:ml-4 text-black">{item.title}</h4>
               </div>
-              <p className="mb-6 text-black">{item.description}</p>
-              <ul className="space-y-3 flex-1">
+              <p className="mb-6 text-black text-sm sm:text-base">{item.description}</p>
+              <ul className="space-y-2 sm:space-y-3 flex-1">
                 {item.features.map((f, i) => (
                   <li key={i} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 mr-3 mt-1 text-green-400 shrink-0" />
-                    <span className="text-black">{f.label}</span>
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 mt-1 text-green-400 shrink-0" />
+                    <span className="text-black text-sm sm:text-base">{f.label}</span>
                   </li>
                 ))}
               </ul>
@@ -99,36 +99,36 @@ const MasterclassGrid: React.FC<MasterclassGridProps> = ({ setShowEnrollModal })
       </section>
 
       {/* Hands-On Projects */}
-      <section className="mb-20 md:mb-32">
-        <div className="border-l-4 border-pink-500 pl-4 mb-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-black">Build a Powerful Project Portfolio</h3>
-          <p className="mt-2 text-black">You won't just learn, you'll build. Here are some of the projects you'll create.</p>
+      <section className="mb-16 sm:mb-20 md:mb-32">
+        <div className="border-l-4 border-pink-500 pl-4 mb-8 sm:mb-12">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">Build a Powerful Project Portfolio</h3>
+          <p className="mt-2 text-black text-sm sm:text-base">You won't just learn, you'll build. Here are some of the projects you'll create.</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 text-center place-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8 text-center place-items-center px-4">
           {projectPortfolio.map((p, i) => (
-            <div key={i} className="glass-card p-6 rounded-xl hover:bg-white/10 transition flex flex-col items-center w-full h-full min-w-[140px]">
+            <div key={i} className="glass-card p-4 sm:p-6 rounded-xl hover:bg-white/10 transition flex flex-col items-center w-full h-full min-w-[120px] sm:min-w-[140px]">
               {p.icon}
-              <span className="font-semibold text-black mt-2">{p.label}</span>
+              <span className="font-semibold text-black mt-2 text-xs sm:text-sm">{p.label}</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* Funding Opportunity */}
-      <section className="mb-20 md:mb-32 flex justify-center">
-        <div className="relative bg-gradient-to-br from-blue-100 via-blue-200 to-blue-50 border-4 border-blue-400 p-10 md:p-14 rounded-3xl text-center shadow-2xl max-w-3xl w-full flex flex-col items-center overflow-hidden animate-pulse-slow">
+      <section className="mb-16 sm:mb-20 md:mb-32 flex justify-center px-4">
+        <div className="relative bg-gradient-to-br from-blue-100 via-blue-200 to-blue-50 border-4 border-blue-400 p-6 sm:p-10 md:p-14 rounded-3xl text-center shadow-2xl max-w-3xl w-full flex flex-col items-center overflow-hidden animate-pulse-slow">
           {/* Glowing animated border */}
           <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-blue-400 animate-glow z-0" style={{boxShadow: '0 0 40px 10px #60a5fa, 0 0 80px 20px #2563eb'}}></div>
           <div className="relative z-10 flex flex-col items-center">
-            <Rocket className="mx-auto w-20 h-20 mb-6 text-blue-500 drop-shadow-lg" />
-            <h3 className="text-4xl md:text-5xl font-extrabold mb-4 text-black drop-shadow">Got an AI Idea? <span className="text-blue-600">We'll Fund It!</span></h3>
-            <p className="max-w-2xl mx-auto mb-10 text-black text-lg font-medium">
+            <Rocket className="mx-auto w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 text-blue-500 drop-shadow-lg" />
+            <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-black drop-shadow">Got an AI Idea? <span className="text-blue-600">We'll Fund It!</span></h3>
+            <p className="max-w-2xl mx-auto mb-6 sm:mb-10 text-black text-sm sm:text-lg font-medium">
               This is more than a course; it's an Mentorship Program. Submit your unique AI project proposal. If it's shortlisted, DamnArt will provide full funding, mentorship, and resources to help you build your own AI tool or startup.
             </p>
             <button
               type="button"
               onClick={() => setShowEnrollModal(true)}
-              className="bg-white text-blue-600 font-extrabold py-4 px-12 rounded-full text-xl border-2 border-blue-500 shadow-lg hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 focus:ring-4 focus:ring-blue-300 outline-none"
+              className="bg-white text-blue-600 font-extrabold py-3 sm:py-4 px-8 sm:px-12 rounded-full text-base sm:text-xl border-2 border-blue-500 shadow-lg hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 focus:ring-4 focus:ring-blue-300 outline-none"
             >
               Submit Your Proposal
             </button>
@@ -137,29 +137,29 @@ const MasterclassGrid: React.FC<MasterclassGridProps> = ({ setShowEnrollModal })
       </section>
 
       {/* Other Benefits */}
-      <section className="mb-20 md:mb-32">
-        <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center text-black">More Than Just a Class</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="mb-16 sm:mb-20 md:mb-32">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-black px-4">More Than Just a Class</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-4">
           {otherBenefits.map((b, i) => (
-            <div key={i} className="glass-card p-8 rounded-2xl flex flex-col items-center text-center h-full shadow-md">
+            <div key={i} className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col items-center text-center h-full shadow-md">
               {b.icon}
-              <h4 className="text-xl font-bold mb-2 text-black mt-2">{b.title}</h4>
-              <p className="text-black text-base">{b.description}</p>
+              <h4 className="text-lg sm:text-xl font-bold mb-2 text-black mt-2">{b.title}</h4>
+              <p className="text-black text-sm sm:text-base">{b.description}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* What You Get Summary */}
-      <section className="mb-20 md:mb-32">
-        <div className="border-l-4 border-pink-500 pl-4 mb-12">
-          <h3 className="text-3xl md:text-4xl font-bold text-black">Everything Included</h3>
-          <p className="mt-2 text-black">A complete package to launch your AI career.</p>
+      <section className="mb-16 sm:mb-20 md:mb-32">
+        <div className="border-l-4 border-pink-500 pl-4 mb-8 sm:mb-12">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">Everything Included</h3>
+          <p className="mt-2 text-black text-sm sm:text-base">A complete package to launch your AI career.</p>
         </div>
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center px-4">
           {summaryItems.map((item, i) => (
-            <span key={i} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 border-2 border-blue-400 text-blue-800 font-semibold shadow-sm text-base">
-              <CheckCircle className="w-5 h-5 text-blue-500" />
+            <span key={i} className="inline-flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 border-2 border-blue-400 text-blue-800 font-semibold shadow-sm text-xs sm:text-base">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
               {item}
             </span>
           ))}
