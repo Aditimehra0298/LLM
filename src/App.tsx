@@ -445,7 +445,7 @@ function App() {
   const faqs = [
     {
       question: "Do I need any coding experience?",
-      answer: "No! This course is designed for those with basic Python and AI knowledge. All tools are visual, drag-and-drop interfaces, but foundational coding skills are required to fully engage with the content."
+      answer: "Yes! This course is designed for those Who having basic Knowledge of  Python and AI knowledge. All tools are visual, drag-and-drop interfaces, but foundational coding skills are required to fully engage with the content."
     },
     {
       question: "What if I miss a live session?",
@@ -454,10 +454,6 @@ function App() {
     {
       question: "Is there job placement assistance?",
       answer: "Yes! We provide resume building, portfolio guidance, and connect you with our partner companies for internships and job opportunities."
-    },
-    {
-      question: "Can I get a refund if I'm not satisfied?",
-      answer: "We offer a 7-day money-back guarantee. If you're not satisfied within the first week, we'll provide a full refund."
     }
   ];
 
