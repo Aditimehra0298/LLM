@@ -77,24 +77,47 @@ const MasterclassGrid: React.FC<MasterclassGridProps> = ({ setShowEnrollModal })
       {/* Program Structure Grid */}
       <section className="mb-12 sm:mb-16 md:mb-20 lg:mb-32">
         <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-center text-black px-3 sm:px-4">A Program Designed for Mastery</h3>
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-stretch">
-          {gridItems.map((item) => (
-            <div key={item.id} className="glass-card p-4 sm:p-6 md:p-8 rounded-2xl flex flex-col h-full shadow-lg">
-              <div className="flex items-center mb-3 sm:mb-4">
-                {item.icon}
-                <h4 className="text-lg sm:text-xl md:text-2xl font-bold ml-2 sm:ml-3 md:ml-4 text-black">{item.title}</h4>
-              </div>
-              <p className="mb-4 sm:mb-6 text-black text-sm sm:text-base">{item.description}</p>
-              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 flex-1">
-                {item.features.map((f, i) => (
-                  <li key={i} className="flex items-start">
-                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-2 sm:mr-3 mt-0.5 sm:mt-1 text-green-400 shrink-0" />
-                    <span className="text-black text-xs sm:text-sm md:text-base">{f.label}</span>
-                  </li>
-                ))}
-              </ul>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+          {/* First Card */}
+          <div className="glass-card p-4 sm:p-6 md:p-8 rounded-2xl flex flex-col h-full shadow-lg w-full md:w-auto md:flex-1">
+            <div className="flex items-center mb-3 sm:mb-4">
+              {gridItems[0].icon}
+              <h4 className="text-lg sm:text-xl md:text-2xl font-bold ml-2 sm:ml-3 md:ml-4 text-black">{gridItems[0].title}</h4>
             </div>
-          ))}
+            <p className="mb-4 sm:mb-6 text-black text-sm sm:text-base">{gridItems[0].description}</p>
+            <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 flex-1">
+              {gridItems[0].features.map((f, i) => (
+                <li key={i} className="flex items-start">
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-2 sm:mr-3 mt-0.5 sm:mt-1 text-green-400 shrink-0" />
+                  <span className="text-black text-xs sm:text-sm md:text-base">{f.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Plus Symbol */}
+          <div className="hidden md:flex items-center justify-center">
+            <div className="bg-blue-500 text-white rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg">
+              +
+            </div>
+          </div>
+
+          {/* Second Card */}
+          <div className="glass-card p-4 sm:p-6 md:p-8 rounded-2xl flex flex-col h-full shadow-lg w-full md:w-auto md:flex-1">
+            <div className="flex items-center mb-3 sm:mb-4">
+              {gridItems[1].icon}
+              <h4 className="text-lg sm:text-xl md:text-2xl font-bold ml-2 sm:ml-3 md:ml-4 text-black">{gridItems[1].title}</h4>
+            </div>
+            <p className="mb-4 sm:mb-6 text-black text-sm sm:text-base">{gridItems[1].description}</p>
+            <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 flex-1">
+              {gridItems[1].features.map((f, i) => (
+                <li key={i} className="flex items-start">
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-2 sm:mr-3 mt-0.5 sm:mt-1 text-green-400 shrink-0" />
+                  <span className="text-black text-xs sm:text-sm md:text-base">{f.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

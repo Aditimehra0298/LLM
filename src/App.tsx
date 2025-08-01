@@ -472,7 +472,7 @@ function App() {
           <div className="text-lg mb-1">🔥</div>
           <div className="font-bold text-xs mb-1">SPECIAL OFFER</div>
           <div className="text-xs">₹20k Early Bird</div>
-          <div className="text-xs">₹30k Regular</div>
+          <div className="text-xs">₹30k Discounted </div>
         </div>
       </div>
 
@@ -491,7 +491,7 @@ function App() {
                 <span className="font-semibold">Early Bird:</span> ₹20k
               </div>
               <div className="text-xs line-through opacity-70">
-                Regular: ₹30k
+                Discounted: ₹30k
               </div>
             </div>
           </div>
@@ -759,7 +759,6 @@ function App() {
                 {[
                  { icon: Calendar, label: 'Duration', value: '3 Months of Expert-Led Training + 3 Months of Industry Training', color: 'bg-blue-100 text-blue-600' },
                  { icon: Globe, label: 'Mode', value: 'Offline Training or Online Training', color: 'bg-green-100 text-green-600' },
-                 { icon: DollarSign, label: 'Total Fees', value: '₹30,000 total (50% OFF from ₹60,000)', color: 'bg-orange-100 text-orange-600' },
                  { icon: Clock, label: 'Next Batch', value: 'Starts Soon ', color: 'bg-purple-100 text-purple-600' },
                  { icon: Award, label: 'Certification', value: 'Industry-recognized certificate', color: 'bg-yellow-100 text-yellow-600' },
                  { icon: Users, label: 'Group Discount', value: 'Available for 3+ participants', color: 'bg-pink-100 text-pink-600' },  
@@ -926,15 +925,7 @@ function App() {
                 Invest in your future with our comprehensive Large Language Model workshop.
                 </p>
                 
-                {/* Discount Banner */}
-                <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 sm:p-4 md:p-6 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 bg-white/10 rounded-full -mr-10 sm:-mr-12 md:-mr-16 -mt-10 sm:-mt-12 md:-mt-16"></div>
-                  <div className="relative z-10">
-                    <div className="text-lg sm:text-xl md:text-3xl font-bold mb-1 sm:mb-2">🔥 SPECIAL DISCOUNT</div>
-                    <div className="text-sm sm:text-lg md:text-xl mb-1 sm:mb-2">₹60k → ₹30k</div>
-                    <div className="text-xs sm:text-sm md:text-lg">Early Bird: ₹20k (Limited)</div>
-                  </div>
-                </div>
+                
                 
                 <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 sm:p-6 md:p-8 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 bg-white/10 rounded-full -mr-10 sm:-mr-12 md:-mr-16 -mt-10 sm:-mt-12 md:-mt-16"></div>
@@ -958,8 +949,8 @@ function App() {
                 <div className="space-y-2 sm:space-y-3 md:space-y-4">
                   {[
                     { label: '👥 Group Discount', value: 'Available for 3+', icon: Users },
-                    { label: '💰 Payment Plan', value: '₹30,000 total (was ₹60,000)', icon: DollarSign },
-                    { label: '📅 Start Date', value: 'August 1, 2025', icon: Calendar },
+                    { label: '💰 Payment Plan', value: '₹30,000 Discounted Price', icon: DollarSign },
+                    { label: '📅 Start Date', value: 'Starts Soon', icon: Calendar },
                     { label: '🖥️ Mode', value: 'Offline or Online Training', icon: Globe },
                     { label: '📜 Certification', value: 'DamnArt AI Division', icon: Award },
                   ].map((item, index) => (
@@ -1006,11 +997,11 @@ function App() {
                     </div>
                     <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
                       <Phone className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
-                      <a href="tel:+919056544487" className="text-gray-700 font-semibold hover:text-blue-700 transition-colors text-sm sm:text-base">+91 90565 44487</a>
+                      <a href="tel:+917986175240" className="text-gray-700 font-semibold hover:text-blue-700 transition-colors text-sm sm:text-base">+91 90565 44487</a>
                     </div>
                     <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
                       <Mail className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
-                      <span className="text-gray-700 text-sm sm:text-base">info@www.damnart.com</span>
+                      <span className="text-gray-700 text-sm sm:text-base">damnart.ai.guladab@gmail.com</span>
                     </div>
                   </div>
                 </div>
@@ -1036,7 +1027,7 @@ function App() {
         
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/919056544487"
+        href="https://wa.me/917986175240"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 group"
@@ -1056,7 +1047,7 @@ function App() {
 
       {/* Floating Phone Button */}
       <a
-        href="tel:+919056544487"
+        href="tel:+917986175240"
         className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 group"
         aria-label="Call us"
       >
@@ -1089,7 +1080,7 @@ function App() {
               <ArrowRight size={16} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </button>
             <a
-              href="tel:+919056544487"
+              href="tel:+917986175240"
               className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg hover:bg-white/30 transition-all duration-300 border-2 border-white/50 flex items-center justify-center space-x-1 sm:space-x-2 w-full sm:w-auto"
               style={{ textDecoration: 'none' }}
             >
@@ -1097,7 +1088,7 @@ function App() {
               <span>Book a Free Call</span>
             </a>
             <a
-              href="https://wa.me/919056544487"
+              href="https://wa.me/917986175240"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-500 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center space-x-1 sm:space-x-2 w-full sm:w-auto"
