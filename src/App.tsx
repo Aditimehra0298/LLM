@@ -466,27 +466,47 @@ function App() {
 
   return (
   <div className="min-h-screen bg-gray-50">
-      {/* Floating Discount Notification */}
-      <div className="fixed top-20 sm:top-24 left-2 sm:left-4 z-40 bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 sm:p-4 rounded-lg shadow-2xl animate-pulse max-w-[200px] sm:max-w-xs">
-        <div className="flex items-center space-x-2 sm:space-x-3">
-          <div className="text-lg sm:text-2xl">🔥</div>
-          <div>
-            <div className="font-bold text-xs sm:text-sm">SPECIAL OFFER</div>
-            <div className="text-xs">₹60k→₹30k</div>
-            <div className="text-xs">Early: ₹20k</div>
+      {/* Floating Discount Notification - Mobile */}
+      <div className="fixed top-20 left-2 z-40 bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 rounded-lg shadow-2xl animate-pulse max-w-[140px] md:hidden">
+        <div className="text-center">
+          <div className="text-lg mb-1">🔥</div>
+          <div className="font-bold text-xs mb-1">SPECIAL OFFER</div>
+          <div className="text-xs">₹20k Early Bird</div>
+          <div className="text-xs">₹30k Regular</div>
+        </div>
+      </div>
+
+      {/* Floating Discount Notification - Desktop */}
+      <div className="fixed top-24 left-6 z-40 bg-gradient-to-br from-red-500 via-orange-500 to-red-600 text-white p-5 rounded-2xl shadow-2xl animate-pulse max-w-[220px] hidden md:block border border-red-400/30">
+        <div className="relative">
+          {/* Decorative elements */}
+          <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-bounce"></div>
+          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-orange-300 rounded-full animate-pulse"></div>
+          
+          <div className="text-center">
+            <div className="text-3xl mb-2">🔥</div>
+            <div className="font-bold text-sm mb-3 bg-white/10 px-3 py-1 rounded-full">SPECIAL OFFER</div>
+            <div className="space-y-1">
+              <div className="text-xs bg-white/10 px-2 py-1 rounded">
+                <span className="font-semibold">Early Bird:</span> ₹20k
+              </div>
+              <div className="text-xs line-through opacity-70">
+                Regular: ₹30k
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 lg:h-24">
-            <div className="flex items-center space-x-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-14 sm:h-16 md:h-20 lg:h-24">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <div className="relative">
-                <img src="/l2.png" alt="Evoke AI Logo" className="h-16 lg:h-20 w-auto" />
+                <img src="/l2.png" alt="Evoke AI Logo" className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto" />
               </div>
-              <span className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 EVOKE AI
               </span>
               <div className="hidden sm:block bg-gradient-to-r from-blue-500 to-blue-700 text-white px-2 py-1 rounded-full text-xs font-semibold animate-pulse">
@@ -499,15 +519,15 @@ function App() {
               onClick={() => setShowMobileMenu((v) => !v)}
               aria-label="Open navigation menu"
             >
-              <Menu className="w-7 h-7 text-blue-600" />
+              <Menu className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600" />
             </button>
             {/* Desktop nav */}
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden md:flex space-x-4 lg:space-x-6 xl:space-x-8">
               {['overview', 'curriculum', 'tools', 'features', 'testimonials', 'pricing'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`font-medium transition-all duration-300 capitalize relative ${
+                  className={`font-medium transition-all duration-300 capitalize relative text-sm lg:text-base ${
                     activeSection === section 
                       ? 'text-blue-600 scale-110' 
                       : 'text-gray-700 hover:text-blue-600 hover:scale-105'
@@ -522,7 +542,7 @@ function App() {
             </nav>
             <button
               onClick={() => setShowEnrollModal(true)}
-              className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group"
+              className="hidden sm:block bg-gradient-to-r from-blue-500 to-blue-700 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-semibold hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group text-xs sm:text-sm md:text-base"
             >
               <span className="relative z-10">Enroll Now</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -540,18 +560,27 @@ function App() {
                     scrollToSection(section);
                     setShowMobileMenu(false);
                   }}
-                  className={`w-full text-left px-6 py-3 font-medium capitalize text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 ${activeSection === section ? 'text-blue-600' : ''}`}
+                  className={`w-full text-left px-4 sm:px-6 py-3 font-medium capitalize text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 text-sm sm:text-base ${activeSection === section ? 'text-blue-600' : ''}`}
                 >
                   {section}
                 </button>
               ))}
+              <button
+                onClick={() => {
+                  setShowEnrollModal(true);
+                  setShowMobileMenu(false);
+                }}
+                className="w-full text-left px-4 sm:px-6 py-3 font-medium text-blue-600 hover:bg-blue-50 transition-all duration-200 text-sm sm:text-base"
+              >
+                Enroll Now
+              </button>
             </nav>
           </div>
         )}
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-32 lg:pt-32">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-24 md:pt-28 lg:pt-32">
         {/* Background Video */}
         <video 
           className="absolute inset-0 w-full h-full object-cover"
@@ -568,7 +597,7 @@ function App() {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+              className="absolute w-1 h-1 sm:w-2 sm:h-2 bg-white/20 rounded-full animate-pulse"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -585,94 +614,103 @@ function App() {
         {/* Video Control */}
         <button
           onClick={toggleVideo}
-          className="absolute top-24 right-8 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+          className="absolute top-20 sm:top-24 md:top-28 right-4 sm:right-6 md:right-8 bg-white/20 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
         >
-          {isVideoPlaying ? <Pause size={24} /> : <Play size={24} />}
+          {isVideoPlaying ? <Pause size={20} className="sm:w-6 sm:h-6" /> : <Play size={20} className="sm:w-6 sm:h-6" />}
         </button>
         
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Floating Badge: Group Discount Available */}
-          
-
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight px-2">
-            <span className="block text-yellow-300 animate-pulse text-center">Evoke AI Large Language Model (LLM)</span>
-            <span className="block bg-gradient-to-r from-blue-300 via-purple-300 to-orange-300 bg-clip-text text-transparent text-center">
-              MASTER CLASS
-            </span>
-          </h1>
-          
-          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed px-4">
-          Elevate Your AI Career in Just 6 Months – Harness the Power of Large Language Models and Real-World Experience!
-          </p>
-          
-          {/* Hero Stats */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-6 sm:mb-8 px-4">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-300">{stat.number}</div>
-                <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
-            <button
-              onClick={() => scrollToSection('overview')}
-              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl relative overflow-hidden w-full sm:w-auto"
-            >
-              <span className="relative z-10 flex items-center justify-center space-x-2">
-                <Rocket size={18} className="sm:w-5 sm:h-5" />
-                <span>Start Your AI Journey</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform sm:w-5 sm:h-5" />
+        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          {/* Main Title Section */}
+          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
+              <span className="block text-yellow-300 animate-pulse text-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-6">Evoke AI Large Language Model (LLM)</span>
+              <span className="block bg-gradient-to-r from-blue-300 via-purple-300 to-orange-300 bg-clip-text text-transparent text-center">
+                MASTER CLASS
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-            
-            <button
-              onClick={() => scrollToSection('curriculum')}
-              className="flex items-center justify-center space-x-2 bg-blue-100 text-blue-800 px-6 py-3 rounded-full font-medium hover:bg-blue-200 transition-all duration-300 border border-blue-200 w-full sm:w-auto"
-            >
-              <BookOpen size={18} className="sm:w-5 sm:h-5" />
-              <span>View Curriculum</span>
-            </button>
+            </h1>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm px-4">
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
-              <Calendar className="text-yellow-300 sm:w-5 sm:h-5" size={16} />
+          {/* Subtitle Section */}
+          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-gray-200 max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed">
+              Elevate Your AI Career in Just 6 Months – Harness the Power of Large Language Models and Real-World Experience!
+            </p>
+          </div>
+          
+          {/* Stats Section */}
+          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 border border-white/20">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-yellow-300 mb-1">{stat.number}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-gray-300">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* CTA Buttons Section */}
+          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-center items-center">
+              <button
+                onClick={() => scrollToSection('overview')}
+                className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 sm:px-6 md:px-8 lg:px-10 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-xs sm:text-sm md:text-base lg:text-lg hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl relative overflow-hidden w-full sm:w-auto"
+              >
+                <span className="relative z-10 flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3">
+                  <Rocket size={16} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                  <span>Start Your AI Journey</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+              
+              <button
+                onClick={() => scrollToSection('curriculum')}
+                className="flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/20 backdrop-blur-sm text-white border border-white/30 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full font-medium hover:bg-white/30 transition-all duration-300 text-xs sm:text-sm md:text-base w-full sm:w-auto"
+              >
+                <BookOpen size={16} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                <span>View Curriculum</span>
+              </button>
+            </div>
+          </div>
+          
+          {/* Program Features Section */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 text-xs sm:text-sm md:text-base">
+            <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 border border-white/20">
+              <Calendar className="text-yellow-300 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               <span>6 Month Program</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
-              <Globe className="text-yellow-300 sm:w-5 sm:h-5" size={16} />
+            <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 border border-white/20">
+              <Globe className="text-yellow-300 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               <span>100% Offline</span>
             </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2">
-              <Award className="text-yellow-300 sm:w-5 sm:h-5" size={16} />
+            <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 border border-white/20">
+              <Award className="text-yellow-300 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               <span>Industry Certificate</span>
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <ChevronDown size={32} />
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+          <ChevronDown size={24} className="sm:w-8 sm:h-8" />
         </div>
       </section>
 
       {/* Partner Companies Section */}
-      <section className="bg-white py-8">
-        <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">Our Partner Companies</h2>
+      <section className="bg-white py-6 sm:py-8 md:py-10">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-blue-900 mb-4 sm:mb-6 md:mb-8 px-4">Our Partner Companies</h2>
         <div className="w-full overflow-x-hidden">
           <div
-            className="flex items-center space-x-16 animate-logo-scroll min-w-full"
-            style={{ animation: 'logo-scroll 40s linear infinite', minHeight: '100px' }}
+            className="flex items-center space-x-8 sm:space-x-12 md:space-x-16 animate-logo-scroll min-w-full"
+            style={{ animation: 'logo-scroll 40s linear infinite', minHeight: '60px' }}
           >
             {Array(4).fill([3,4,5,6,7,8,9]).flat().map((num, idx) => (
               <img
                 key={num + '-' + idx}
                 src={`/l${num}.png`}
                 alt={`Partner Logo l${num}`}
-                className="h-20 w-auto object-contain drop-shadow-md"
+                className="h-12 sm:h-16 md:h-20 w-auto object-contain drop-shadow-md"
               />
             ))}
           </div>
@@ -722,7 +760,7 @@ function App() {
                  { icon: Calendar, label: 'Duration', value: '3 Months of Expert-Led Training + 3 Months of Industry Training', color: 'bg-blue-100 text-blue-600' },
                  { icon: Globe, label: 'Mode', value: 'Offline Training or Online Training', color: 'bg-green-100 text-green-600' },
                  { icon: DollarSign, label: 'Total Fees', value: '₹30,000 total (50% OFF from ₹60,000)', color: 'bg-orange-100 text-orange-600' },
-                 { icon: Clock, label: 'Next Batch', value: 'Starts August 1, 2025', color: 'bg-purple-100 text-purple-600' },
+                 { icon: Clock, label: 'Next Batch', value: 'Starts Soon ', color: 'bg-purple-100 text-purple-600' },
                  { icon: Award, label: 'Certification', value: 'Industry-recognized certificate', color: 'bg-yellow-100 text-yellow-600' },
                  { icon: Users, label: 'Group Discount', value: 'Available for 3+ participants', color: 'bg-pink-100 text-pink-600' },  
                  { icon: DollarSign, label: 'Incentive', value: 'Top performers earn up to ₹5,000/month from Month 2, rising to ₹7,000/month from Month 4 for exceptional performance', color: 'bg-green-100 text-green-600' },               
@@ -787,51 +825,51 @@ function App() {
 </section>
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+        <section id="testimonials" className="py-12 sm:py-16 md:py-20">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
               🗣️ Hear What Students Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Real stories from real students who transformed their careers
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full -ml-16 -mt-16"></div>
-              <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-100 to-red-100 rounded-full -mr-12 -mb-12"></div>
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full -ml-12 sm:-ml-16 -mt-12 sm:-mt-16"></div>
+              <div className="absolute bottom-0 right-0 w-20 sm:w-24 h-20 sm:h-24 bg-gradient-to-br from-orange-100 to-red-100 rounded-full -mr-10 sm:-mr-12 -mb-10 sm:-mb-12"></div>
               
               <div className="relative z-10">
-                <div className="flex items-center justify-center mb-8">
+                <div className="flex items-center justify-center mb-6 sm:mb-8">
                   <img
                     src={testimonials[currentTestimonial].image}
                     alt={testimonials[currentTestimonial].author}
-                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-4 border-white shadow-lg"
                   />
                 </div>
                 
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-4 sm:mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="text-yellow-400 fill-current" size={24} />
+                    <Star key={i} className="text-yellow-400 fill-current w-5 h-5 sm:w-6 sm:h-6" size={20} />
                   ))}
                 </div>
                 
-                <blockquote className="text-xl text-gray-700 text-center mb-6 italic leading-relaxed">
+                <blockquote className="text-base sm:text-lg md:text-xl text-gray-700 text-center mb-4 sm:mb-6 italic leading-relaxed">
                   "{testimonials[currentTestimonial].quote}"
                 </blockquote>
                 
                 <div className="text-center">
-                  <div className="font-semibold text-blue-600 text-lg">{testimonials[currentTestimonial].author}</div>
-                  <div className="text-gray-500">{testimonials[currentTestimonial].role}</div>
+                  <div className="font-semibold text-blue-600 text-base sm:text-lg">{testimonials[currentTestimonial].author}</div>
+                  <div className="text-gray-500 text-sm sm:text-base">{testimonials[currentTestimonial].role}</div>
                 </div>
                 
-                <div className="flex justify-center space-x-2 mt-8">
+                <div className="flex justify-center space-x-2 mt-6 sm:mt-8">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentTestimonial(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                         index === currentTestimonial ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
                       }`}
                     />
@@ -843,34 +881,32 @@ function App() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+        <section className="py-12 sm:py-16 md:py-20">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
               ❓ Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Get answers to common questions about the program
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4 px-4">
             {faqs.map((faq, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300"
+                  className="w-full p-4 sm:p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900">{faq.question}</h3>
                   <ChevronRight 
-                    className={`text-gray-400 transform transition-transform duration-300 ${
-                      expandedFaq === index ? 'rotate-90' : ''
-                    }`} 
-                    size={20} 
+                    className={`text-gray-400 transform transition-transform duration-300 w-4 h-4 sm:w-5 sm:h-5`} 
+                    size={18} 
                   />
                 </button>
                 {expandedFaq === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -879,47 +915,47 @@ function App() {
         </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="py-20">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
+        <section id="pricing" className="py-12 sm:py-16 md:py-20">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
               <div>
-                <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                   💸 Program Fee & Enrollment
                 </h2>
-                <p className="text-xl text-gray-600 mb-8">
+                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
                 Invest in your future with our comprehensive Large Language Model workshop.
                 </p>
                 
                 {/* Discount Banner */}
-                <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-4 sm:p-6 rounded-2xl text-center mb-6 sm:mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/10 rounded-full -mr-12 sm:-mr-16 -mt-12 sm:-mt-16"></div>
+                <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 sm:p-4 md:p-6 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 bg-white/10 rounded-full -mr-10 sm:-mr-12 md:-mr-16 -mt-10 sm:-mt-12 md:-mt-16"></div>
                   <div className="relative z-10">
-                    <div className="text-xl sm:text-3xl font-bold mb-2">🔥 SPECIAL DISCOUNT</div>
-                    <div className="text-lg sm:text-xl mb-2">₹60k → ₹30k</div>
-                    <div className="text-sm sm:text-lg">Early Bird: ₹20k (Limited)</div>
+                    <div className="text-lg sm:text-xl md:text-3xl font-bold mb-1 sm:mb-2">🔥 SPECIAL DISCOUNT</div>
+                    <div className="text-sm sm:text-lg md:text-xl mb-1 sm:mb-2">₹60k → ₹30k</div>
+                    <div className="text-xs sm:text-sm md:text-lg">Early Bird: ₹20k (Limited)</div>
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 sm:p-8 rounded-2xl text-center mb-6 sm:mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/10 rounded-full -mr-12 sm:-mr-16 -mt-12 sm:-mt-16"></div>
+                <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 sm:p-6 md:p-8 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 bg-white/10 rounded-full -mr-10 sm:-mr-12 md:-mr-16 -mt-10 sm:-mt-12 md:-mt-16"></div>
                   <div className="relative z-10">
-                    <div className="text-2xl sm:text-4xl font-bold mb-2 line-through opacity-70">₹60,000</div>
-                    <div className="text-3xl sm:text-5xl font-bold mb-2 text-yellow-300">₹30,000</div>
-                    <div className="text-sm sm:text-lg opacity-90">50% OFF - Limited Time</div>
+                    <div className="text-xl sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 line-through opacity-70">₹60,000</div>
+                    <div className="text-2xl sm:text-3xl md:text-5xl font-bold mb-1 sm:mb-2 text-yellow-300">₹30,000</div>
+                    <div className="text-xs sm:text-sm md:text-lg opacity-90">50% OFF - Limited Time</div>
                   </div>
                 </div>
                 
                 {/* Early Bird Special */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 sm:p-6 rounded-2xl text-center mb-6 sm:mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 sm:w-24 h-20 sm:h-24 bg-white/10 rounded-full -mr-10 sm:-mr-12 -mt-10 sm:-mt-12"></div>
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-3 sm:p-4 md:p-6 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/10 rounded-full -mr-8 sm:-mr-10 md:-mr-12 -mt-8 sm:-mt-10 md:-mt-12"></div>
                   <div className="relative z-10">
-                    <div className="text-xl sm:text-3xl font-bold mb-2">Early Bird Special</div>
-                    <div className="text-2xl sm:text-4xl font-bold mb-2">₹20,000</div>
-                    <div className="text-xs sm:text-sm opacity-90">Only for first few seats</div>
+                    <div className="text-lg sm:text-xl md:text-3xl font-bold mb-1 sm:mb-2">Early Bird Special</div>
+                    <div className="text-xl sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2">₹20,000</div>
+                    <div className="text-xs sm:text-xs md:text-sm opacity-90">Only for first few seats</div>
                   </div>
                 </div>
                 
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
                   {[
                     { label: '👥 Group Discount', value: 'Available for 3+', icon: Users },
                     { label: '💰 Payment Plan', value: '₹30,000 total (was ₹60,000)', icon: DollarSign },
@@ -927,68 +963,68 @@ function App() {
                     { label: '🖥️ Mode', value: 'Offline or Online Training', icon: Globe },
                     { label: '📜 Certification', value: 'DamnArt AI Division', icon: Award },
                   ].map((item, index) => (
-                    <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between py-3 sm:py-4 border-b border-gray-200 hover:bg-gray-50 px-3 sm:px-4 rounded-lg transition-colors duration-300">
-                      <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-0">
-                        <item.icon className="text-blue-600 sm:w-5 sm:h-5" size={18} />
-                        <span className="font-medium text-gray-700 text-sm sm:text-base">{item.label}</span>
+                    <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between py-2 sm:py-3 md:py-4 border-b border-gray-200 hover:bg-gray-50 px-2 sm:px-3 md:px-4 rounded-lg transition-colors duration-300">
+                      <div className="flex items-center space-x-2 sm:space-x-3 mb-1 sm:mb-0">
+                        <item.icon className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
+                        <span className="font-medium text-gray-700 text-xs sm:text-sm md:text-base">{item.label}</span>
                       </div>
-                      <span className="text-blue-600 text-sm sm:text-base">{item.value}</span>
+                      <span className="text-blue-600 text-xs sm:text-sm md:text-base">{item.value}</span>
                     </div>
                   ))}
                   {/* Stipend Row - suitcase + gift emoji, label, blue value right-aligned, two lines */}
-                  <div className="flex items-center justify-between py-4 border-b border-gray-200 hover:bg-gray-50 px-4 rounded-lg transition-colors duration-300">
-                    <div className="flex items-center space-x-3">
-                      <Briefcase className="text-blue-600" size={20} />
-                      <span className="text-lg">🎁</span>
-                      <span className="font-medium text-gray-700">Stipend</span>
+                  <div className="flex items-center justify-between py-3 sm:py-4 border-b border-gray-200 hover:bg-gray-50 px-2 sm:px-4 rounded-lg transition-colors duration-300">
+                    <div className="flex items-center space-x-2 sm:space-x-3">
+                      <Briefcase className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
+                      <span className="text-sm sm:text-lg">🎁</span>
+                      <span className="font-medium text-gray-700 text-xs sm:text-sm md:text-base">Stipend</span>
                     </div>
-                    <span className="text-blue-600 text-right block">
+                    <span className="text-blue-600 text-right block text-xs sm:text-sm">
                       Upto 5,000/month from 2nd month
                       <span className="block text-xs text-blue-500 font-normal">(7000/month from 4th month for top performers)</span>
                     </span>
                   </div>
                   {/* Placement Opportunity Row - users + rocket emoji, label, blue value right-aligned */}
-                  <div className="flex items-center justify-between py-4 border-b border-gray-200 hover:bg-gray-50 px-4 rounded-lg transition-colors duration-300">
-                    <div className="flex items-center space-x-3">
-                      <Users className="text-blue-600" size={20} />
-                      <span className="text-lg">🚀</span>
-                      <span className="font-medium text-gray-700">Placement Opportunity</span>
+                  <div className="flex items-center justify-between py-3 sm:py-4 border-b border-gray-200 hover:bg-gray-50 px-2 sm:px-4 rounded-lg transition-colors duration-300">
+                    <div className="flex items-center space-x-2 sm:space-x-3">
+                      <Users className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
+                      <span className="text-sm sm:text-lg">🚀</span>
+                      <span className="font-medium text-gray-700 text-xs sm:text-sm md:text-base">Placement Opportunity</span>
                     </div>
-                    <span className="text-blue-600 text-right whitespace-nowrap">Entry-level AI Executive role</span>
+                    <span className="text-blue-600 text-right whitespace-nowrap text-xs sm:text-sm">Entry-level AI Executive role</span>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-8">
-                <div className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -mr-12 -mt-12"></div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 relative z-10">📞 Quick Contact</h3>
-                  <div className="space-y-4 relative z-10">
-                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                      <Globe className="text-blue-600" size={20} />
-                      <span className="text-gray-700">www.damnart.com/evoke</span>
+              <div className="space-y-6 sm:space-y-8">
+                <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 sm:w-24 h-20 sm:h-24 bg-blue-50 rounded-full -mr-10 sm:-mr-12 -mt-10 sm:-mt-12"></div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 relative z-10">📞 Quick Contact</h3>
+                  <div className="space-y-3 sm:space-y-4 relative z-10">
+                    <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                      <Globe className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
+                      <span className="text-gray-700 text-sm sm:text-base">www.damnart.com/evoke</span>
                     </div>
-                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                      <Phone className="text-blue-600" size={20} />
-                      <a href="tel:+919056544487" className="text-gray-700 font-semibold hover:text-blue-700 transition-colors">+91 90565 44487</a>
+                    <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                      <Phone className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
+                      <a href="tel:+919056544487" className="text-gray-700 font-semibold hover:text-blue-700 transition-colors text-sm sm:text-base">+91 90565 44487</a>
                     </div>
-                    <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
-                      <Mail className="text-blue-600" size={20} />
-                      <span className="text-gray-700">info@www.damnart.com</span>
+                    <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                      <Mail className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
+                      <span className="text-gray-700 text-sm sm:text-base">info@www.damnart.com</span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-8 rounded-2xl border-l-4 border-blue-500 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-blue-100 rounded-full -mr-10 -mt-10 opacity-50"></div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 relative z-10 flex items-center space-x-2">
-                    <Lightbulb className="text-blue-500" size={28} />
-                    <span>🧠 Still Thinking?</span>
+                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 sm:p-8 rounded-2xl border-l-4 border-blue-500 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 bg-blue-100 rounded-full -mr-8 sm:-mr-10 -mt-8 sm:-mt-10 opacity-50"></div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 relative z-10 flex items-center space-x-1 sm:space-x-2">
+                    <Lightbulb className="text-blue-500 w-5 h-5 sm:w-7 sm:h-7" size={20} />
+                    <span className="text-sm sm:text-base">🧠 Still Thinking?</span>
                   </h3>
-                  <p className="text-gray-700 mb-4 relative z-10">
+                  <p className="text-gray-700 mb-3 sm:mb-4 relative z-10 text-sm sm:text-base">
                     This course is not for tomorrow. It's for today's learner, the one who wants to create, automate, and lead with AI.
                   </p>
-                  <p className="font-semibold text-gray-900 relative z-10">
+                  <p className="font-semibold text-gray-900 relative z-10 text-sm sm:text-base">
                     No tech degree. No expensive tools. Just curiosity, guidance, and action.
                   </p>
                 </div>
@@ -998,60 +1034,76 @@ function App() {
         </section>
 
         
-      {/* Floating Call Button */}
-      <a
-        href="tel:+919056544487"
-        className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-50 flex items-center justify-center bg-red-600 text-white p-0 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-300"
-        style={{ boxShadow: '0 8px 32px 0 rgba(200, 0, 0, 0.25)', width: '48px', height: '48px' }}
-        aria-label="Call +91 90565 44487"
-      >
-        <Phone className="" size={24} />
-      </a>
       {/* Floating WhatsApp Button */}
       <a
         href="https://wa.me/919056544487"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center justify-center bg-transparent p-0 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
-        style={{ boxShadow: '0 8px 32px 0 rgba(0, 200, 0, 0.15)', width: '48px', height: '48px' }}
-        aria-label="WhatsApp +91 90565 44487">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="48" height="48" style={{ display: 'block' }}/>
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 group"
+        aria-label="Contact us on WhatsApp"
+      >
+        <div className="bg-green-500 hover:bg-green-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[56px] min-h-[56px] flex items-center justify-center">
+          <svg className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+          </svg>
+        </div>
+        {/* Tooltip - Hidden on mobile */}
+        <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden sm:block">
+          Chat on WhatsApp
+          <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
+      </a>
+
+      {/* Floating Phone Button */}
+      <a
+        href="tel:+919056544487"
+        className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50 group"
+        aria-label="Call us"
+      >
+        <div className="bg-red-500 hover:bg-red-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[56px] min-h-[56px] flex items-center justify-center">
+          <Phone className="w-6 h-6 sm:w-8 sm:h-8" />
+        </div>
+        {/* Tooltip - Hidden on mobile */}
+        <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden sm:block">
+          Call Now
+          <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+        </div>
       </a>
       </div>
       <div className='w-full'>
         {/* CTA Section - Full Width Gradient */}
-        <section className="bg-gradient-to-r from-blue-500 to-purple-500 py-16 px-4 sm:px-0 w-full text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+        <section className="bg-gradient-to-r from-blue-500 to-purple-500 py-12 sm:py-16 px-4 w-full text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-4">
             ✅ Enroll Today and EVOKE Your Future
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto px-4">
             Don't wait for the future to happen. Create it with AI.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-6 sm:mb-8 px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-4 sm:mb-6 md:mb-8 px-4">
             <button
               onClick={() => setShowEnrollModal(true)}
-              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 sm:space-x-3 hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl w-full sm:w-auto"
+              className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg flex items-center justify-center space-x-1 sm:space-x-2 md:space-x-3 hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl w-full sm:w-auto"
             >
-              <GraduationCap size={20} className="sm:w-6 sm:h-6" />
+              <GraduationCap size={16} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
               <span>Register Now</span>
-              <ArrowRight size={20} className="sm:w-6 sm:h-6" />
+              <ArrowRight size={16} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </button>
             <a
               href="tel:+919056544487"
-              className="bg-white/20 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white/30 transition-all duration-300 border-2 border-white/50 flex items-center justify-center space-x-2 w-full sm:w-auto"
+              className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg hover:bg-white/30 transition-all duration-300 border-2 border-white/50 flex items-center justify-center space-x-1 sm:space-x-2 w-full sm:w-auto"
               style={{ textDecoration: 'none' }}
             >
-              <Phone size={18} className="sm:w-5 sm:h-5" />
+              <Phone size={16} className="sm:w-5 sm:h-5" />
               <span>Book a Free Call</span>
             </a>
             <a
               href="https://wa.me/919056544487"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center space-x-2 w-full sm:w-auto"
+              className="bg-blue-500 text-white px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-sm sm:text-base md:text-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center space-x-1 sm:space-x-2 w-full sm:w-auto"
               style={{ textDecoration: 'none' }}
             >
-              <MessageCircle size={18} className="sm:w-5 sm:h-5" />
+              <MessageCircle size={16} className="sm:w-5 sm:h-5" />
               <span>💬 Chat with Us</span>
             </a>
           </div>
@@ -1060,52 +1112,52 @@ function App() {
 
       {/* Enroll Modal */}
       {showEnrollModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full relative overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-3 sm:p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-sm sm:max-w-md w-full relative overflow-y-auto max-h-[90vh]">
             <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-blue-600 text-2xl z-10"
+              className="absolute top-2 sm:top-3 right-2 sm:right-3 text-gray-400 hover:text-blue-600 text-xl sm:text-2xl z-10"
               onClick={() => setShowEnrollModal(false)}
               aria-label="Close"
             >
               &times;
             </button>
-            <div className="p-4 sm:p-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-blue-700 mb-4 text-center">Enroll Now</h2>
-              <form className="space-y-4" onSubmit={handleEnrollSubmit}>
+            <div className="p-3 sm:p-4 md:p-6">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-700 mb-3 sm:mb-4 text-center">Enroll Now</h2>
+              <form className="space-y-3 sm:space-y-4" onSubmit={handleEnrollSubmit}>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Name</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Name</label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base"
                   value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Email</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Email</label>
                 <input
                   type="email"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base"
                   value={form.email}
                   onChange={e => setForm({ ...form, email: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Phone Number</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Phone Number</label>
                 <input
                   type="tel"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base"
                   value={form.phone}
                   onChange={e => setForm({ ...form, phone: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Profession</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Profession</label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base"
                   value={form.profession}
                   onChange={e => setForm({ ...form, profession: e.target.value })}
                   required
@@ -1118,19 +1170,19 @@ function App() {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Location</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Location</label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base"
                   value={form.location}
                   onChange={e => setForm({ ...form, location: e.target.value })}
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Training Mode</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Training Mode</label>
                 <select
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base"
                   value={form.trainingMode}
                   onChange={e => setForm({ ...form, trainingMode: e.target.value })}
                   required
@@ -1141,9 +1193,9 @@ function App() {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-1 text-sm sm:text-base">Any Message</label>
+                <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Any Message</label>
                 <textarea
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[80px]"
+                  className="w-full border border-gray-300 rounded-lg px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base min-h-[60px] sm:min-h-[80px]"
                   value={form.message}
                   onChange={e => setForm({ ...form, message: e.target.value })}
                   placeholder="Let us know anything else..."
@@ -1152,24 +1204,24 @@ function App() {
               <div className="flex flex-col sm:flex-row justify-end gap-2 pt-2">
                 <button
                   type="button"
-                  className="px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium w-full sm:w-auto"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium w-full sm:w-auto text-xs sm:text-sm"
                   onClick={() => setShowEnrollModal(false)}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-bold w-full sm:w-auto"
+                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-bold w-full sm:w-auto text-xs sm:text-sm"
                   disabled={formStatus === 'loading'}
                 >
                   {formStatus === 'loading' ? 'Submitting...' : 'Submit'}
                 </button>
               </div>
               {formStatus === 'success' && (
-                <div className="text-green-600 text-center font-semibold">Enrolled successfully!</div>
+                <div className="text-green-600 text-center font-semibold text-xs sm:text-sm">Enrolled successfully!</div>
               )}
               {formStatus === 'error' && (
-                <div className="text-red-600 text-center font-semibold">Submission failed. Please try again.</div>
+                <div className="text-red-600 text-center font-semibold text-xs sm:text-sm">Submission failed. Please try again.</div>
               )}
             </form>
             </div>
@@ -1239,17 +1291,17 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="bg-blue-900 text-white py-12 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-900/20 rounded-full -ml-32 -mt-32"></div>
-        <div className="w-full px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <img src="/l2.png" alt="Evoke AI Logo" className="h-16 w-16 bg-white rounded-full shadow-lg object-contain" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">EVOKE AI</span>
+      <footer className="bg-blue-900 text-white py-8 sm:py-12 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-blue-900/20 rounded-full -ml-24 sm:-ml-32 -mt-24 sm:-mt-32"></div>
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10">
+          <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+            <img src="/l2.png" alt="Evoke AI Logo" className="h-12 w-12 sm:h-16 sm:w-16 bg-white rounded-full shadow-lg object-contain" />
+            <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">EVOKE AI</span>
           </div>
-          <p className="text-gray-400 mb-4">
+          <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
             &copy; 2025 DamnArt. All rights reserved. | EVOKE AI Masterclass
           </p>
-          <div className="flex justify-center space-x-6 text-sm text-gray-500">
+          <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 md:space-x-6 text-xs sm:text-sm text-gray-500">
             <a href="https://www.damnart.com/privacy-policy/" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="https://www.damnart.com/services/" className="hover:text-white transition-colors">Terms of Service</a>
             <a href="https://www.damnart.com/contact-us/" className="hover:text-white transition-colors">Contact Us</a>

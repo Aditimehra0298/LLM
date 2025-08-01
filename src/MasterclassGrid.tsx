@@ -5,7 +5,7 @@ const gridItems = [
   {
     id: 'training',
     title: '3 Months of Expert-Led Training',
-    icon: <BrainCircuit className="w-10 h-10 text-indigo-400" />,
+    icon: <BrainCircuit className="w-8 h-8 sm:w-10 sm:h-10 text-indigo-400" />,
     description: 'Build a rock-solid foundation with an industry-ready curriculum covering everything from fundamentals to ethics.',
     features: [
       { label: 'LLM Fundamentals: GPT, Claude, Gemini, Mistral & more.' },
@@ -18,7 +18,7 @@ const gridItems = [
   {
     id: 'industrial',
     title: '3 Months of Industrial Project',
-    icon: <Factory className="w-10 h-10 text-pink-400" />,
+    icon: <Factory className="w-8 h-8 sm:w-10 sm:h-10 text-pink-400" />,
     description: 'Transition from student to professional. Apply your skills to a live industry project, mentored by experts.',
     features: [
       { label: 'Work on real datasets and solve practical problems.' },
@@ -30,26 +30,26 @@ const gridItems = [
 ];
 
 const projectPortfolio = [
-  { icon: <FileText className="mx-auto w-10 h-10 mb-3 text-indigo-300" />, label: 'Resume Analyzers' },
-  { icon: <Mail className="mx-auto w-10 h-10 mb-3 text-indigo-300" />, label: 'AI Email Assistants' },
-  { icon: <FileQuestion className="mx-auto w-10 h-10 mb-3 text-indigo-300" />, label: 'PDF Q&A Bots' },
-  { icon: <Bot className="mx-auto w-10 h-10 mb-3 text-indigo-300" />, label: 'Personal ChatGPTs' },
-  { icon: <LayoutDashboard className="mx-auto w-10 h-10 mb-3 text-indigo-300" />, label: 'LLM Dashboards' },
+  { icon: <FileText className="mx-auto w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3 text-indigo-300" />, label: 'Resume Analyzers' },
+  { icon: <Mail className="mx-auto w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3 text-indigo-300" />, label: 'AI Email Assistants' },
+  { icon: <FileQuestion className="mx-auto w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3 text-indigo-300" />, label: 'PDF Q&A Bots' },
+  { icon: <Bot className="mx-auto w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3 text-indigo-300" />, label: 'Personal ChatGPTs' },
+  { icon: <LayoutDashboard className="mx-auto w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3 text-indigo-300" />, label: 'LLM Dashboards' },
 ];
 
 const otherBenefits = [
   {
-    icon: <MapPin className="w-10 h-10 mb-4 text-pink-400" />,
+    icon: <MapPin className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4 text-pink-400" />,
     title: 'Choose Your Learning Mode',
     description: 'Learn your way. Both modes offer the same curriculum and outcomes. Available Online (live sessions) or Offline at select centers (Mohali, Delhi).',
   },
   {
-    icon: <GraduationCap className="w-10 h-10 mb-4 text-pink-400" />,
+    icon: <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4 text-pink-400" />,
     title: 'Scholarships for Top Performers',
     description: 'We support bright minds. Ace our entry exam and get up to 100% scholarship to fund your learning journey.',
   },
   {
-    icon: <Trophy className="w-10 h-10 mb-4 text-pink-400" />,
+    icon: <Trophy className="w-8 h-8 sm:w-10 sm:h-10 mb-3 sm:mb-4 text-pink-400" />,
     title: 'Monthly Contests & Rewards',
     description: 'Compete in AI hackathons and challenges. Winners receive cash prizes up to ₹10,000, badges, and a spot in our Hall of Fame.',
   },
@@ -75,21 +75,21 @@ const MasterclassGrid: React.FC<MasterclassGridProps> = ({ setShowEnrollModal })
   return (
     <section className="w-full">
       {/* Program Structure Grid */}
-      <section className="mb-16 sm:mb-20 md:mb-32">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-black px-4">A Program Designed for Mastery</h3>
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-stretch">
+      <section className="mb-12 sm:mb-16 md:mb-20 lg:mb-32">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-center text-black px-3 sm:px-4">A Program Designed for Mastery</h3>
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-stretch">
           {gridItems.map((item) => (
-            <div key={item.id} className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col h-full shadow-lg">
-              <div className="flex items-center mb-4">
+            <div key={item.id} className="glass-card p-4 sm:p-6 md:p-8 rounded-2xl flex flex-col h-full shadow-lg">
+              <div className="flex items-center mb-3 sm:mb-4">
                 {item.icon}
-                <h4 className="text-xl sm:text-2xl font-bold ml-3 sm:ml-4 text-black">{item.title}</h4>
+                <h4 className="text-lg sm:text-xl md:text-2xl font-bold ml-2 sm:ml-3 md:ml-4 text-black">{item.title}</h4>
               </div>
-              <p className="mb-6 text-black text-sm sm:text-base">{item.description}</p>
-              <ul className="space-y-2 sm:space-y-3 flex-1">
+              <p className="mb-4 sm:mb-6 text-black text-sm sm:text-base">{item.description}</p>
+              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 flex-1">
                 {item.features.map((f, i) => (
                   <li key={i} className="flex items-start">
-                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 mt-1 text-green-400 shrink-0" />
-                    <span className="text-black text-sm sm:text-base">{f.label}</span>
+                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-2 sm:mr-3 mt-0.5 sm:mt-1 text-green-400 shrink-0" />
+                    <span className="text-black text-xs sm:text-sm md:text-base">{f.label}</span>
                   </li>
                 ))}
               </ul>
@@ -98,71 +98,57 @@ const MasterclassGrid: React.FC<MasterclassGridProps> = ({ setShowEnrollModal })
         </div>
       </section>
 
-      {/* Hands-On Projects */}
-      <section className="mb-16 sm:mb-20 md:mb-32">
-        <div className="border-l-4 border-pink-500 pl-4 mb-8 sm:mb-12">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">Build a Powerful Project Portfolio</h3>
-          <p className="mt-2 text-black text-sm sm:text-base">You won't just learn, you'll build. Here are some of the projects you'll create.</p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8 text-center place-items-center px-4">
-          {projectPortfolio.map((p, i) => (
-            <div key={i} className="glass-card p-4 sm:p-6 rounded-xl hover:bg-white/10 transition flex flex-col items-center w-full h-full min-w-[120px] sm:min-w-[140px]">
-              {p.icon}
-              <span className="font-semibold text-black mt-2 text-xs sm:text-sm">{p.label}</span>
+      {/* Project Portfolio Section */}
+      <section className="mb-12 sm:mb-16 md:mb-20 lg:mb-32">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-center text-black px-3 sm:px-4">Build Your LLM Portfolio</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+          {projectPortfolio.map((item, index) => (
+            <div key={index} className="text-center p-3 sm:p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+              {item.icon}
+              <p className="text-xs sm:text-sm md:text-base font-medium text-gray-700">{item.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Funding Opportunity */}
-      <section className="mb-16 sm:mb-20 md:mb-32 flex justify-center px-4">
-        <div className="relative bg-gradient-to-br from-blue-100 via-blue-200 to-blue-50 border-4 border-blue-400 p-6 sm:p-10 md:p-14 rounded-3xl text-center shadow-2xl max-w-3xl w-full flex flex-col items-center overflow-hidden animate-pulse-slow">
-          {/* Glowing animated border */}
-          <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-blue-400 animate-glow z-0" style={{boxShadow: '0 0 40px 10px #60a5fa, 0 0 80px 20px #2563eb'}}></div>
-          <div className="relative z-10 flex flex-col items-center">
-            <Rocket className="mx-auto w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 text-blue-500 drop-shadow-lg" />
-            <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-black drop-shadow">Got an AI Idea? <span className="text-blue-600">We'll Fund It!</span></h3>
-            <p className="max-w-2xl mx-auto mb-6 sm:mb-10 text-black text-sm sm:text-lg font-medium">
-              This is more than a course; it's an Mentorship Program. Submit your unique AI project proposal. If it's shortlisted, DamnArt will provide full funding, mentorship, and resources to help you build your own AI tool or startup.
-            </p>
-            <button
-              type="button"
-              onClick={() => setShowEnrollModal(true)}
-              className="bg-white text-blue-600 font-extrabold py-3 sm:py-4 px-8 sm:px-12 rounded-full text-base sm:text-xl border-2 border-blue-500 shadow-lg hover:bg-blue-50 hover:text-blue-700 transition-all duration-200 focus:ring-4 focus:ring-blue-300 outline-none"
-            >
-              Submit Your Proposal
-            </button>
+      {/* Other Benefits Section */}
+      <section className="mb-12 sm:mb-16 md:mb-20 lg:mb-32">
+        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-center text-black px-3 sm:px-4">Additional Benefits</h3>
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {otherBenefits.map((benefit, index) => (
+            <div key={index} className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              {benefit.icon}
+              <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">{benefit.title}</h4>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Summary Section */}
+      <section className="mb-12 sm:mb-16 md:mb-20 lg:mb-32">
+        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 sm:w-32 md:w-40 h-24 sm:h-32 md:h-40 bg-white/10 rounded-full -mr-12 sm:-mr-16 md:-mr-20 -mt-12 sm:-mt-16 md:-mt-20"></div>
+          <div className="relative z-10">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 text-center">Program Summary</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
+              {summaryItems.map((item, index) => (
+                <div key={index} className="flex items-center space-x-2 p-2 sm:p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-300 flex-shrink-0" />
+                  <span className="text-xs sm:text-sm md:text-base font-medium">{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-6 sm:mt-8 md:mt-10">
+              <button
+                onClick={() => setShowEnrollModal(true)}
+                className="bg-white text-blue-600 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base md:text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 mx-auto"
+              >
+                <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span>Enroll Now</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Other Benefits */}
-      <section className="mb-16 sm:mb-20 md:mb-32">
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-black px-4">More Than Just a Class</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-4">
-          {otherBenefits.map((b, i) => (
-            <div key={i} className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col items-center text-center h-full shadow-md">
-              {b.icon}
-              <h4 className="text-lg sm:text-xl font-bold mb-2 text-black mt-2">{b.title}</h4>
-              <p className="text-black text-sm sm:text-base">{b.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* What You Get Summary */}
-      <section className="mb-16 sm:mb-20 md:mb-32">
-        <div className="border-l-4 border-pink-500 pl-4 mb-8 sm:mb-12">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black">Everything Included</h3>
-          <p className="mt-2 text-black text-sm sm:text-base">A complete package to launch your AI career.</p>
-        </div>
-        <div className="flex flex-wrap gap-3 sm:gap-4 justify-center px-4">
-          {summaryItems.map((item, i) => (
-            <span key={i} className="inline-flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 border-2 border-blue-400 text-blue-800 font-semibold shadow-sm text-xs sm:text-base">
-              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
-              {item}
-            </span>
-          ))}
         </div>
       </section>
     </section>
