@@ -69,6 +69,20 @@ const phases: Phase[] = [
     weeks: [
       {
         week: 1,
+        title: "Basics of Python Programming for AI",
+        topics: [
+          "Python Basics: Variables, data types, loops, functions",
+          "Essential Python libraries: NumPy, Pandas, Matplotlib",
+          "Setting Up the Python Environment: IDEs, libraries"
+        ],
+        projects: [
+          "Python environment setup",
+          "Data manipulation with Pandas project"
+        ],
+        tools: ["Python", "Jupyter Notebook", "VS Code", "NumPy", "Pandas"]
+      },
+      {
+        week: 2,
         title: "Introduction to Large Language Models (LLMs)",
         topics: [
           "What are LLMs? Overview and applications",
@@ -81,20 +95,6 @@ const phases: Phase[] = [
           "Transformer architecture visualization"
         ],
         tools: ["Hugging Face", "OpenAI API", "Python"]
-      },
-      {
-        week: 2,
-        title: "Basics of Python Programming for AI",
-        topics: [
-          "Python Basics: Variables, data types, loops, functions",
-          "Essential Python libraries: NumPy, Pandas, Matplotlib",
-          "Setting Up the Python Environment: IDEs, libraries"
-        ],
-        projects: [
-          "Python environment setup",
-          "Data manipulation with Pandas project"
-        ],
-        tools: ["Python", "Jupyter Notebook", "VS Code", "NumPy", "Pandas"]
       },
       {
         week: 3,
