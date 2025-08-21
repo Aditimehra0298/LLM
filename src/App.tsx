@@ -198,6 +198,7 @@ function App() {
     message: ''
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [showThankYou, setShowThankYou] = useState(false);
 
   // Handle enroll modal form submission
   const handleEnrollSubmit = async (e: React.FormEvent) => {
@@ -226,6 +227,7 @@ function App() {
       });
       setFormStatus('success');
       setForm({ name: '', email: '', phone: '', profession: '', location: '', trainingMode: '', message: '' });
+      setShowThankYou(true);
     } catch (err) {
       setFormStatus('error');
     }
@@ -406,6 +408,13 @@ function App() {
     }
   };
 
+  const resetModal = () => {
+    setShowEnrollModal(false);
+    setShowThankYou(false);
+    setFormStatus('idle');
+    setForm({ name: '', email: '', phone: '', profession: '', location: '', trainingMode: '', message: '' });
+  };
+
   const toggleVideo = () => {
     const video = document.querySelector('video') as HTMLVideoElement;
     if (video) {
@@ -581,6 +590,38 @@ function App() {
         {/* Video Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-blue-700/80"></div>
         
+        {/* Pricing Banner - Left Side Square */}
+        <div className="absolute top-32 sm:top-36 md:top-40 lg:top-44 left-4 sm:left-6 md:left-8 lg:left-12 z-20">
+          <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl shadow-2xl relative overflow-hidden border-2 border-white/20">
+            <div className="absolute top-0 right-0 w-8 sm:w-10 h-8 sm:h-10 bg-white/10 rounded-full -mr-4 sm:-mr-5 -mt-4 sm:-mt-5"></div>
+            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-2 sm:p-3">
+              <DollarSign className="text-yellow-300 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mb-1 sm:mb-2" />
+              <h3 className="text-xs sm:text-sm md:text-sm font-bold mb-2 sm:mb-3 leading-tight">Want to Know the Price?</h3>
+              <div className="space-y-1 sm:space-y-2">
+                <button
+                  onClick={() => setShowEnrollModal(true)}
+                  className="group bg-white text-orange-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold text-xs hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-md w-full"
+                >
+                  <span className="flex items-center justify-center space-x-1">
+                    <Phone size={10} className="sm:w-3 sm:h-3" />
+                    <span>Contact</span>
+                  </span>
+                </button>
+                
+                <a
+                  href="tel:+917986175240"
+                  className="block bg-white/20 backdrop-blur-sm text-white border border-white/30 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-medium hover:bg-white/30 transition-all duration-300 text-xs w-full"
+                >
+                  <span className="flex items-center justify-center space-x-1">
+                    <Phone size={10} className="sm:w-3 sm:h-3" />
+                    <span>Call</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* Video Control */}
         <button
           onClick={toggleVideo}
@@ -623,7 +664,7 @@ function App() {
           <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-center items-center">
               <button
-                onClick={() => scrollToSection('overview')}
+                onClick={() => setShowEnrollModal(true)}
                 className="group bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 sm:px-6 md:px-8 lg:px-10 py-2.5 sm:py-3 md:py-4 rounded-full font-semibold text-xs sm:text-sm md:text-base lg:text-lg hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-2xl relative overflow-hidden w-full sm:w-auto"
               >
                 <span className="relative z-10 flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3">
@@ -675,7 +716,7 @@ function App() {
             className="flex items-center space-x-8 sm:space-x-12 md:space-x-16 animate-logo-scroll min-w-full"
             style={{ animation: 'logo-scroll 40s linear infinite', minHeight: '60px' }}
           >
-            {Array(4).fill([3,4,5,6,7,8,9]).flat().map((num, idx) => (
+            {Array(4).fill([3,4,5,6,7,8,9,10]).flat().map((num, idx) => (
               <img
                 key={num + '-' + idx}
                 src={`/l${num}.png`}
@@ -914,6 +955,20 @@ function App() {
                       <span className="font-semibold">damnart.ai.guladab@gmail.com</span>
                     </div>
                   </div>
+                  
+                  {/* Know Price Button */}
+                  <div className="mt-6">
+                    <button
+                      onClick={() => setShowEnrollModal(true)}
+                      className="group bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg relative overflow-hidden w-full"
+                    >
+                      <span className="relative z-10 flex items-center justify-center space-x-2">
+                        <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span>Know Price</span>
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
               
@@ -1038,14 +1093,16 @@ function App() {
           <div className="bg-white rounded-2xl shadow-2xl max-w-sm sm:max-w-md w-full relative overflow-y-auto max-h-[90vh]">
             <button
               className="absolute top-2 sm:top-3 right-2 sm:right-3 text-gray-400 hover:text-blue-600 text-xl sm:text-2xl z-10"
-              onClick={() => setShowEnrollModal(false)}
+              onClick={resetModal}
               aria-label="Close"
             >
               &times;
             </button>
             <div className="p-3 sm:p-4 md:p-6">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-700 mb-3 sm:mb-4 text-center">Enroll Now</h2>
-              <form className="space-y-3 sm:space-y-4" onSubmit={handleEnrollSubmit}>
+              {!showThankYou ? (
+                <>
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-700 mb-3 sm:mb-4 text-center">Enroll Now</h2>
+                  <form className="space-y-3 sm:space-y-4" onSubmit={handleEnrollSubmit}>
               <div>
                 <label className="block text-gray-700 font-medium mb-1 text-xs sm:text-sm md:text-base">Name</label>
                 <input
@@ -1127,7 +1184,7 @@ function App() {
                 <button
                   type="button"
                   className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 font-medium w-full sm:w-auto text-xs sm:text-sm"
-                  onClick={() => setShowEnrollModal(false)}
+                  onClick={resetModal}
                 >
                   Cancel
                 </button>
@@ -1146,6 +1203,51 @@ function App() {
                 <div className="text-red-600 text-center font-semibold text-xs sm:text-sm">Submission failed. Please try again.</div>
               )}
             </form>
+                </>
+              ) : (
+                /* Thank You Page */
+                <div className="text-center py-4 sm:py-6">
+                  <div className="mb-6">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-green-600" />
+                    </div>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-green-700 mb-3">Thank You! 🎉</h2>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Your Enrollment Request Has Been Submitted</h3>
+                  </div>
+                  
+                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6 mb-6">
+                    <h4 className="text-base sm:text-lg font-semibold text-blue-800 mb-3">What Happens Next?</h4>
+                    <div className="space-y-2 text-sm sm:text-base text-blue-700">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>We'll review your information within 24 hours</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>You'll receive detailed pricing and program information</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <span>Our team will contact you to discuss next steps</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <p className="text-sm sm:text-base text-gray-600">
+                      <strong>Need immediate assistance?</strong><br/>
+                      Call us at <a href="tel:+917986175240" className="text-blue-600 hover:text-blue-800 font-semibold">+91 79861 75240</a>
+                    </p>
+                    
+                    <button
+                      onClick={resetModal}
+                      className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-300 shadow-lg w-full"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
