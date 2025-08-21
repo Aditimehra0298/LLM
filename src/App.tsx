@@ -466,37 +466,7 @@ function App() {
 
   return (
   <div className="min-h-screen bg-gray-50">
-      {/* Floating Discount Notification - Mobile */}
-      <div className="fixed top-20 left-2 z-40 bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 rounded-lg shadow-2xl animate-pulse max-w-[140px] md:hidden">
-        <div className="text-center">
-          <div className="text-lg mb-1">🔥</div>
-          <div className="font-bold text-xs mb-1">SPECIAL OFFER</div>
-          <div className="text-xs">₹20k Early Bird</div>
-          <div className="text-xs">₹30k Discounted </div>
-        </div>
-      </div>
 
-      {/* Floating Discount Notification - Desktop */}
-      <div className="fixed top-24 left-6 z-40 bg-gradient-to-br from-red-500 via-orange-500 to-red-600 text-white p-5 rounded-2xl shadow-2xl animate-pulse max-w-[220px] hidden md:block border border-red-400/30">
-        <div className="relative">
-          {/* Decorative elements */}
-          <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-bounce"></div>
-          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-orange-300 rounded-full animate-pulse"></div>
-          
-          <div className="text-center">
-            <div className="text-3xl mb-2">🔥</div>
-            <div className="font-bold text-sm mb-3 bg-white/10 px-3 py-1 rounded-full">SPECIAL OFFER</div>
-            <div className="space-y-1">
-              <div className="text-xs bg-white/10 px-2 py-1 rounded">
-                <span className="font-semibold">Early Bird:</span> ₹20k
-              </div>
-              <div className="text-xs line-through opacity-70">
-                Discounted: ₹30k
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200">
@@ -913,75 +883,36 @@ function App() {
           </div>
         </section>
 
-        {/* Pricing Section */}
+        {/* Contact Us Section */}
         <section id="pricing" className="py-12 sm:py-16 md:py-20">
           <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+                💰 Program Fee & Enrollment
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
+                To know the pricing details and enroll in our comprehensive Large Language Model workshop, please contact us.
+              </p>
+            </div>
+            
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
-              <div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-                  💸 Program Fee & Enrollment
-                </h2>
-                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
-                Invest in your future with our comprehensive Large Language Model workshop.
-                </p>
-                
-                
-                
-                <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 sm:p-6 md:p-8 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 bg-white/10 rounded-full -mr-10 sm:-mr-12 md:-mr-16 -mt-10 sm:-mt-12 md:-mt-16"></div>
-                  <div className="relative z-10">
-                    <div className="text-xl sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 line-through opacity-70">₹60,000</div>
-                    <div className="text-2xl sm:text-3xl md:text-5xl font-bold mb-1 sm:mb-2 text-yellow-300">₹30,000</div>
-                    <div className="text-xs sm:text-sm md:text-lg opacity-90">50% OFF - Limited Time</div>
-                  </div>
-                </div>
-                
-                {/* Early Bird Special */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-3 sm:p-4 md:p-6 rounded-2xl text-center mb-4 sm:mb-6 md:mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-white/10 rounded-full -mr-8 sm:-mr-10 md:-mr-12 -mt-8 sm:-mt-10 md:-mt-12"></div>
-                  <div className="relative z-10">
-                    <div className="text-lg sm:text-xl md:text-3xl font-bold mb-1 sm:mb-2">Early Bird Special</div>
-                    <div className="text-xl sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2">₹20,000</div>
-                    <div className="text-xs sm:text-xs md:text-sm opacity-90">Only for first few seats</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-2 sm:space-y-3 md:space-y-4">
-                  {[
-                    { label: '👥 Group Discount', value: 'Available for 3+', icon: Users },
-                    { label: '💰 Payment Plan', value: '₹30,000 Discounted Price', icon: DollarSign },
-                    { label: '📅 Start Date', value: 'Starts Soon', icon: Calendar },
-                    { label: '🖥️ Mode', value: 'Offline or Online Training', icon: Globe },
-                    { label: '📜 Certification', value: 'DamnArt AI Division', icon: Award },
-                  ].map((item, index) => (
-                    <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between py-2 sm:py-3 md:py-4 border-b border-gray-200 hover:bg-gray-50 px-2 sm:px-3 md:px-4 rounded-lg transition-colors duration-300">
-                      <div className="flex items-center space-x-2 sm:space-x-3 mb-1 sm:mb-0">
-                        <item.icon className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
-                        <span className="font-medium text-gray-700 text-xs sm:text-sm md:text-base">{item.label}</span>
-                      </div>
-                      <span className="text-blue-600 text-xs sm:text-sm md:text-base">{item.value}</span>
+              <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 sm:p-8 rounded-2xl text-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white/10 rounded-full -mr-12 sm:-mr-16 -mt-12 sm:-mt-16"></div>
+                <div className="relative z-10">
+                  <div className="text-4xl sm:text-5xl font-bold mb-4">📞</div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4">Contact Us for Pricing</h3>
+                  <p className="text-lg sm:text-xl opacity-90 mb-6">
+                    Get detailed information about program fees, payment plans, and special offers by reaching out to our team.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-center space-x-2">
+                      <Phone className="text-yellow-300" size={20} />
+                      <span className="font-semibold">+91 90565 44487</span>
                     </div>
-                  ))}
-                  {/* Stipend Row - suitcase + gift emoji, label, blue value right-aligned, two lines */}
-                  <div className="flex items-center justify-between py-3 sm:py-4 border-b border-gray-200 hover:bg-gray-50 px-2 sm:px-4 rounded-lg transition-colors duration-300">
-                    <div className="flex items-center space-x-2 sm:space-x-3">
-                      <Briefcase className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
-                      <span className="text-sm sm:text-lg">🎁</span>
-                      <span className="font-medium text-gray-700 text-xs sm:text-sm md:text-base">Stipend</span>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="text-yellow-300" size={20} />
+                      <span className="font-semibold">damnart.ai.guladab@gmail.com</span>
                     </div>
-                    <span className="text-blue-600 text-right block text-xs sm:text-sm">
-                      Upto 5,000/month from 2nd month
-                      <span className="block text-xs text-blue-500 font-normal">(7000/month from 4th month for top performers)</span>
-                    </span>
-                  </div>
-                  {/* Placement Opportunity Row - users + rocket emoji, label, blue value right-aligned */}
-                  <div className="flex items-center justify-between py-3 sm:py-4 border-b border-gray-200 hover:bg-gray-50 px-2 sm:px-4 rounded-lg transition-colors duration-300">
-                    <div className="flex items-center space-x-2 sm:space-x-3">
-                      <Users className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5" size={16} />
-                      <span className="text-sm sm:text-lg">🚀</span>
-                      <span className="font-medium text-gray-700 text-xs sm:text-sm md:text-base">Placement Opportunity</span>
-                    </div>
-                    <span className="text-blue-600 text-right whitespace-nowrap text-xs sm:text-sm">Entry-level AI Executive role</span>
                   </div>
                 </div>
               </div>
