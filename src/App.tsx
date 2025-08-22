@@ -1319,7 +1319,7 @@ function App() {
         <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-blue-900/20 rounded-full -ml-24 sm:-ml-32 -mt-24 sm:-mt-32"></div>
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 text-center relative z-10">
           <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
-            <img src="/l2.png" alt="Evoke AI Logo" className="h-12 w-12 sm:h-16 sm:w-16 bg-white rounded-full shadow-lg object-contain" />
+            <img src="/l1.png" alt="Evoke AI Logo" className="h-12 w-12 sm:h-16 sm:w-16 bg-white rounded-full shadow-lg object-contain" />
             <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">EVOKE AI</span>
           </div>
           <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
