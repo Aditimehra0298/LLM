@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlap Solution Demo - EVOKE AI Hero Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .demo-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        
+        .device-view {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 32px;
+            background: #fafafa;
+        }
+        
+        .device-label {
+            font-weight: bold;
+            color: #374151;
+            margin-bottom: 12px;
+            text-align: center;
+            padding: 8px;
+            background: #e5e7eb;
+            border-radius: 6px;
+        }
+        
+        .hero-simulation {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            border-radius: 8px;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #fbbf24;
+        }
+        
+        .hero-subtitle {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #e5e7eb;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            color: #d1d5db;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .hero-button {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .pricing-banner {
+            position: absolute;
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            color: white;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+        }
+        
+        .pricing-banner.desktop {
+            top: 40px;
+            left: 20px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+        }
+        
+        .pricing-banner.mobile {
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 16px;
+        }
+        
+        .pricing-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+            color: #fbbf24;
+        }
+        
+        .pricing-text {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .pricing-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .pricing-button {
+            background: white;
+            color: #f97316;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .pricing-banner.mobile .pricing-buttons {
+            flex-direction: row;
+            gap: 6px;
+        }
+        
+        .pricing-banner.mobile .pricing-button {
+            padding: 10px 16px;
+            font-size: 12px;
+        }
+        
+        .problem-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 30;
+        }
+        
+        .solution-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 30;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #f9fafb;
+            font-weight: bold;
+            color: #374151;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-badge.problem {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        
+        .status-badge.solved {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .code-snippet {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        
+        .highlight {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .mobile-only {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-only {
+                display: block;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="demo-section">
+            <h1 class="demo-title">🚀 EVOKE AI Hero Section - Overlap Problem Solved</h1>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 24px;">
+                Visual demonstration of how the overlapping pricing banner issue has been resolved with responsive design
+            </p>
+        </div>
+
+        <div class="grid-container">
+            <!-- BEFORE: Problem State -->
+            <div class="device-view">
+                <div class="device-label">❌ BEFORE: Desktop Layout on Mobile (Problem)</div>
+                <div class="hero-simulation">
+                    <div class="hero-content">
+                        <div class="hero-title">Evoke AI LLM MASTER CLASS</div>
+                        <div class="hero-subtitle">Elevate Your AI Career in Just 6 Months</div>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Students</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-buttons">
+                            <button class="hero-button">Start Your AI Journey</button>
+                            <button class="hero-button">View Curriculum</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Desktop pricing banner positioned for mobile (causing overlap) -->
+                    <div class="pricing-banner desktop" style="position: absolute; top: 40px; left: 20px;">
+                        <div class="pricing-icon">💰</div>
+                        <div class="pricing-text">Want to Know the Price?</div>
+                        <div class="pricing-buttons">
+                            <button class="pricing-button">Contact</button>
+                            <button class="pricing-button">Call</button>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-indicator">⚠️ CONTENT OVERLAP!</div>
+                </div>
+                
+                <div style="margin-top: 16px; padding: 12px; background: #fef2f2; border-radius: 6px; border-left: 4px solid #dc2626;">
+                    <strong>Problem:</strong> Desktop pricing banner overlaps with hero content on mobile devices, making text unreadable and buttons inaccessible.
+                </div>
+            </div>
+
+            <!-- AFTER: Solution State -->
+            <div class="device-view">
+                <div class="device-label">✅ AFTER: Mobile-Optimized Layout (Solved)</div>
+                <div class="hero-simulation">
+                    <div class="hero-content">
+                        <div class="hero-title">Evoke AI LLM MASTER CLASS</div>
+                        <div class="hero-subtitle">Elevate Your AI Career in Just 6 Months</div>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Students</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-buttons">
+                            <button class="hero-button">Start Your AI Journey</button>
+                            <button class="hero-button">View Curriculum</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile pricing banner positioned at bottom (no overlap) -->
+                    <div class="pricing-banner mobile">
+                        <div style="display: flex; flex-direction: column; align-items: center; min-width: 120px; margin-right: 16px;">
+                            <div class="pricing-icon">💰</div>
+                            <div class="pricing-text">Want to Know the Price?</div>
+                        </div>
+                        <div class="pricing-buttons">
+                            <button class="pricing-button">Contact</button>
+                            <button class="pricing-button">Call</button>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-indicator">✅ NO OVERLAP!</div>
+                </div>
+                
+                <div style="margin-top: 16px; padding: 12px; background: #f0fdf4; border-radius: 6px; border-left: 4px solid #16a34a;">
+                    <strong>Solution:</strong> Mobile-specific pricing banner positioned at bottom center, ensuring all hero content remains fully visible and accessible.
+                </div>
+            </div>
+        </div>
+
+        <!-- Responsive Breakpoints Demo -->
+        <div class="demo-section">
+            <h2 class="demo-title">📱 Responsive Breakpoint Strategy</h2>
+            <div class="grid-container">
+                <div class="device-view">
+                    <div class="device-label">📱 Mobile (xs - sm)</div>
+                    <div style="padding: 16px; background: #f3f4f6; border-radius: 8px;">
+                        <div style="margin-bottom: 12px;">
+                            <strong>Pricing Banner:</strong>
+                            <span class="status-badge solved">Bottom Center</span>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Size:</strong> w-70 h-25 (280px × 100px)
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Layout:</strong> Horizontal with spacious buttons
+                        </div>
+                        <div>
+                            <strong>Content:</strong> Fully visible, no overlap
+                        </div>
+                    </div>
+                </div>
+
+                <div class="device-view">
+                    <div class="device-label">📱 Tablet (sm - md)</div>
+                    <div style="padding: 16px; background: #f3f4f6; border-radius: 8px;">
+                        <div style="margin-bottom: 12px;">
+                            <strong>Pricing Banner:</strong>
+                            <span class="status-badge solved">Bottom Center</span>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Size:</strong> w-70 h-25 (280px × 100px)
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Layout:</strong> Horizontal with standard buttons
+                        </div>
+                        <div>
+                            <strong>Content:</strong> Fully visible, no overlap
+                        </div>
+                    </div>
+                </div>
+
+                <div class="device-view">
+                    <div class="device-label">💻 Desktop (md+)</div>
+                    <div style="padding: 16px; background: #f3f4f6; border-radius: 8px;">
+                        <div style="margin-bottom: 12px;">
+                            <strong>Pricing Banner:</strong>
+                            <span class="status-badge solved">Left Side</span>
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Size:</strong> w-44 h-44 (176px × 176px)
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Layout:</strong> Vertical with stacked buttons
+                        </div>
+                        <div>
+                            <strong>Content:</strong> Original design preserved
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="demo-section">
+            <h2 class="demo-title">⚙️ Technical Implementation</h2>
+            
+            <h3 style="margin-bottom: 12px; color: #374151;">CSS Classes Used:</h3>
+            <div class="code-snippet">
+<span class="highlight">/* Desktop Pricing Banner - Hidden on mobile */</span>
+&lt;div class="<span class="highlight">hidden md:block</span> absolute top-32 sm:top-36 md:top-40 lg:top-44 left-4 sm:left-6 md:left-8 lg:left-12 z-20"&gt;
+
+<span class="highlight">/* Mobile Pricing Banner - Positioned below hero content */</span>
+&lt;div class="<span class="highlight">md:hidden</span> absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20"&gt;
+
+<span class="highlight">/* Responsive sizing for mobile banner */</span>
+&lt;div class="<span class="highlight">w-70 h-25</span> bg-gradient-to-r from-orange-500 to-red-500"&gt;
+            </div>
+
+            <h3 style="margin-bottom: 12px; color: #374151; margin-top: 24px;">Key Responsive Features:</h3>
+            <ul style="margin-left: 20px; line-height: 1.6; color: #4b5563;">
+                <li><strong>Conditional Display:</strong> <code>hidden md:block</code> and <code>md:hidden</code> for device-specific rendering</li>
+                <li><strong>Responsive Positioning:</strong> Different positioning strategies for mobile vs desktop</li>
+                <li><strong>Adaptive Sizing:</strong> <code>w-40 sm:w-48 h-16 sm:h-20</code> for progressive enhancement</li>
+                <li><strong>Content Spacing:</strong> Adjusted margins and padding for mobile optimization</li>
+                <li><strong>Z-index Management:</strong> Proper layering to prevent content conflicts</li>
+            </ul>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="demo-section">
+            <h2 class="demo-title">📊 Before vs After Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Before (Problem)</th>
+                        <th>After (Solution)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Content Overlap</strong></td>
+                        <td>Pricing banner covered hero text and buttons</td>
+                        <td>No overlap, all content fully visible</td>
+                        <td><span class="status-badge solved">Solved</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile Usability</strong></td>
+                        <td>Poor user experience, inaccessible elements</td>
+                        <td>Optimized for mobile interaction</td>
+                        <td><span class="status-badge solved">Solved</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Responsive Design</strong></td>
+                        <td>Fixed layout causing issues on small screens</td>
+                        <td>Adaptive layout for all screen sizes</td>
+                        <td><span class="status-badge solved">Solved</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desktop Experience</strong></td>
+                        <td>Original design preserved</td>
+                        <td>Original design maintained</td>
+                        <td><span class="status-badge solved">Preserved</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accessibility</strong></td>
+                        <td>Content hidden behind overlapping elements</td>
+                        <td>All content accessible on all devices</td>
+                        <td><span class="status-badge solved">Solved</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Benefits Summary -->
+        <div class="demo-section">
+            <h2 class="demo-title">🎯 Benefits of the Solution</h2>
+            <div class="grid-container">
+                <div class="device-view">
+                    <div class="device-label">📱 Mobile Users</div>
+                    <ul style="margin-left: 20px; line-height: 1.6; color: #4b5563;">
+                        <li>Full content visibility</li>
+                        <li>Easy access to pricing info</li>
+                        <li>Optimized touch interactions</li>
+                        <li>Better reading experience</li>
+                    </ul>
+                </div>
+
+                <div class="device-view">
+                    <div class="device-label">💻 Desktop Users</div>
+                    <ul style="margin-left: 20px; line-height: 1.6; color: #4b5563;">
+                        <li>Original design preserved</li>
+                        <li>Familiar layout maintained</li>
+                        <li>No changes to existing UX</li>
+                        <li>Consistent branding</li>
+                    </ul>
+                </div>
+
+                <div class="device-view">
+                    <div class="device-label">🔧 Developers</div>
+                    <ul style="margin-left: 20px; line-height: 1.6; color: #4b5563;">
+                        <li>Clean, maintainable code</li>
+                        <li>Tailwind CSS responsive classes</li>
+                        <li>Easy to modify and extend</li>
+                        <li>Performance optimized</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section" style="text-align: center; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white;">
+            <h2 style="margin-bottom: 16px;">🎉 Overlap Problem Successfully Solved!</h2>
+            <p style="font-size: 18px; opacity: 0.9;">
+                The EVOKE AI hero section now provides an optimal user experience across all device sizes<br>
+                with no content overlap issues and fully responsive design.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

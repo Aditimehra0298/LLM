@@ -559,7 +559,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-24 md:pt-28 lg:pt-32">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-24 md:pt-28 lg:pt-32 pb-36 md:pb-0">
         {/* Background Video */}
         <video 
           className="absolute inset-0 w-full h-full object-cover"
@@ -590,8 +590,8 @@ function App() {
         {/* Video Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-blue-700/80"></div>
         
-        {/* Pricing Banner - Left Side Square */}
-        <div className="absolute top-32 sm:top-36 md:top-40 lg:top-44 left-4 sm:left-6 md:left-8 lg:left-12 z-20">
+        {/* Pricing Banner - Left Side Square - Hidden on mobile to prevent overlap */}
+        <div className="hidden md:block absolute top-32 sm:top-36 md:top-40 lg:top-44 left-4 sm:left-6 md:left-8 lg:left-12 z-20">
           <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl shadow-2xl relative overflow-hidden border-2 border-white/20">
             <div className="absolute top-0 right-0 w-8 sm:w-10 h-8 sm:h-10 bg-white/10 rounded-full -mr-4 sm:-mr-5 -mt-4 sm:-mt-5"></div>
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-2 sm:p-3">
@@ -622,6 +622,40 @@ function App() {
           </div>
         </div>
         
+                {/* Mobile Pricing Banner - Positioned below hero content on mobile */}
+        <div className="md:hidden absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="w-[320px] h-[90px] bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl shadow-2xl relative overflow-hidden border-2 border-white/20">
+            <div className="absolute top-0 right-0 w-8 h-8 bg-white/10 rounded-full -mr-4 -mt-4"></div>
+            <div className="relative z-10 h-full flex items-center justify-center space-x-3 px-3">
+              <div className="flex flex-col items-center min-w-[100px] mr-3">
+                <DollarSign className="text-yellow-300 w-5 h-5 mb-1" />
+                <span className="text-xs font-bold leading-tight text-center">Want to Know the Price?</span>
+              </div>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => setShowEnrollModal(true)}
+                  className="group bg-white text-orange-600 px-3 py-1.5 rounded-full font-semibold text-xs hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-md"
+                >
+                  <span className="flex items-center justify-center space-x-1">
+                    <Phone size={10} />
+                    <span>Contact</span>
+                  </span>
+                </button>
+                
+                <a
+                  href="tel:+917986175240"
+                  className="bg-white/20 backdrop-blur-sm text-white border border-white/30 px-3 py-1.5 rounded-full font-medium hover:bg-white/30 transition-all duration-300 text-xs"
+                >
+                  <span className="flex items-center justify-center space-x-1">
+                    <Phone size={10} />
+                    <span>Call</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* Video Control */}
         <button
           onClick={toggleVideo}
@@ -630,9 +664,9 @@ function App() {
           {isVideoPlaying ? <Pause size={20} className="sm:w-6 sm:h-6" /> : <Play size={20} className="sm:w-6 sm:h-6" />}
         </button>
         
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mt-4 sm:mt-6 md:mt-0">
           {/* Main Title Section */}
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
+          <div className="mb-3 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 2xl:mb-16">
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
               <span className="block text-yellow-300 animate-pulse text-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-6">Evoke AI Large Language Model (LLM)</span>
               <span className="block bg-gradient-to-r from-blue-300 via-purple-300 to-orange-300 bg-clip-text text-transparent text-center">
@@ -642,26 +676,26 @@ function App() {
           </div>
           
           {/* Subtitle Section */}
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
+          <div className="mb-3 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 2xl:mb-16">
             <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-gray-200 max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed">
               Elevate Your AI Career in Just 6 Months – Harness the Power of Large Language Models and Real-World Experience!
             </p>
           </div>
           
           {/* Stats Section */}
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16">
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 md:p-4 border border-white/20">
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-yellow-300 mb-1">{stat.number}</div>
-                  <div className="text-xs sm:text-sm md:text-base text-gray-300">{stat.label}</div>
+          <div className="mb-3 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 2xl:mb-16">
+                            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-1.5 sm:p-3 md:p-4 border border-white/20">
+                      <div className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-yellow-300 mb-1">{stat.number}</div>
+                      <div className="text-xs sm:text-sm md:text-base text-gray-300">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
           </div>
           
           {/* CTA Buttons Section */}
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16 mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
+          <div className="mb-3 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 2xl:mb-16 mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10 2xl:mt-12">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-center items-center">
               <button
                 onClick={() => setShowEnrollModal(true)}
@@ -686,17 +720,17 @@ function App() {
           </div>
           
           {/* Program Features Section */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 text-xs sm:text-sm md:text-base">
-            <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 border border-white/20">
-              <Calendar className="text-yellow-300 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-6 text-xs sm:text-sm md:text-base">
+            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 border border-white/20">
+              <Calendar className="text-yellow-300 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               <span>6 Month Program</span>
             </div>
-            <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 border border-white/20">
-              <Globe className="text-yellow-300 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 border border-white/20">
+              <Globe className="text-yellow-300 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               <span>100% Offline</span>
             </div>
-            <div className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-3 border border-white/20">
-              <Award className="text-yellow-300 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 bg-white/10 backdrop-blur-sm rounded-full px-2 sm:px-3 md:px-4 py-1 sm:py-2 md:py-3 border border-white/20">
+              <Award className="text-yellow-300 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               <span>Industry Certificate</span>
             </div>
           </div>
@@ -706,6 +740,9 @@ function App() {
         <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
           <ChevronDown size={24} className="sm:w-8 sm:h-8" />
         </div>
+        
+        {/* Mobile Bottom Spacing - Ensures content doesn't get cut off by mobile pricing banner */}
+        <div className="md:hidden absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-blue-900/20 to-transparent pointer-events-none"></div>
       </section>
 
       {/* Partner Companies Section */}
